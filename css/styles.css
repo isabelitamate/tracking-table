@@ -51,13 +51,5 @@ table thead tr:not(:last-child) {
     visibility: hidden;
 }
 
-table.dataTable tbody [role='row'] td:first-child {
-    position: sticky;
-    left: 0;
-    background: #fff;
-}
-table.dataTable tbody [role='row'] td:nth-child(2) {
-        position: sticky;
-        left: 77px;
-        background: #fff;
-}
+
+

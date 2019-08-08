@@ -16,21 +16,21 @@ $(document).ready(function () {
     editor = new $.fn.dataTable.Editor({
         table: "#example",
         fields: [{
-            label: "ID:",
-            name: "hotel_id"
-        }, {
-            label: "Nombre:",
-            name: "hotel_name"
-        }, {
-            label: "Cadena:",
-            name: "hotel_chain"
-        }, {
-            label: "Tipo:",
-            name: "hotel_type",
-            type: "select",
-            def: "Web oficial",
-            options: ['Web oficial', 'Motor']
-        }, {
+        //     label: "ID:",
+        //     name: "hotel_id"
+        // }, {
+        //     label: "Nombre:",
+        //     name: "hotel_name"
+        // }, {
+        //     label: "Cadena:",
+        //     name: "hotel_chain"
+        // }, {
+        //     label: "Tipo:",
+        //     name: "hotel_type",
+        //     type: "select",
+        //     def: "Web oficial",
+        //     options: ['Web oficial', 'Motor']
+        // }, {
             label: "Analytics UA:",
             name: "analytics_ua"
         }, {
@@ -209,40 +209,53 @@ $(document).ready(function () {
         var next = target.next(); // siguiente row
         
         if (!next.is('.selected, .group')) { // selecciona si no está seleccionada o es group
+            
             table.row(next).select(); 
-
         }
-        
     });
     
     table.on('deselect', function (e, dt, row, indexes) {
 
         console.log('deselección');
         var target = table.row(indexes).nodes().to$();
-        table.row($('+ .selected', target)).deselect(); // deselecciona la siguiente
+        var next = target.next(); // siguiente row
         
+        table.row($(next)).deselect(); // deselecciona la siguiente
     });
+
     
+    // Modificaciones en el selector de Datatable
+
     table.on('user-select', function (e, dt, type, cell, originalEvent) {
         
-        var target = $(originalEvent.target.closest("tr"));
+        e.preventDefault(); // previene todo
 
-        if ( target.is('.selected') ) { // OJO ----> cancelamos el evento para hacerlo
-            e.preventDefault();
+        var target = $(originalEvent.target.closest("tr")); // row target
+
+        if (! target.is('.selected')) { // si no está seleccionado se selecciona
+            
+            table.row( target ).select();
+        } else {
 
             table.row( target ).deselect();
         }
-
     });
     
+    // Select / Deselect all
+    
+    $('.js-multi-select').on('click', function() {
+
+        if (table.rows({ selected: true, page: 'current' })[0].length ) {
+
+            table.rows('.selected').deselect();
+        } else {
+
+            table.rows({ page: 'current' }).select();
+        }
+    });
 
 
 
-
-
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ STICKY
-
-    $('#example tbody [role=row]')
 
 
 
