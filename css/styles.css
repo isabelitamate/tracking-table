@@ -1,0 +1,63 @@
+body {
+    font: 90%/1.45em "Helvetica Neue", HelveticaNeue, Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #fff;
+}
+
+.main {
+
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 15px;
+    overflow: hidden;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.mi-container {
+
+    max-width: 1300px;
+    margin: 0 auto;
+    box-shadow: 0 10px 50px 8px #8b878763;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+
+table thead {
+    box-shadow: inset 0 0 0 1px #cacaca;
+}
+
+table thead tr:not(:last-child) {
+    border-bottom: 1px solid #cacaca;
+}
+
+.group {
+    display: none;
+    background-color: tomato !important;
+}
+
+[role='row']+[role='row'] td:nth-child(1),
+[role='row']+[role='row'] td:nth-child(2),
+[role='row']+[role='row'] td:nth-child(3),
+[role='row']+[role='row'] td:nth-child(4) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+table.dataTable tbody [role='row'] td:first-child {
+    position: sticky;
+    left: 0;
+    background: #fff;
+}
+table.dataTable tbody [role='row'] td:nth-child(2) {
+        position: sticky;
+        left: 77px;
+        background: #fff;
+}
