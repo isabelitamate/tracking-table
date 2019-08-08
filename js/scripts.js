@@ -5,11 +5,20 @@ $(document).ready(function () {
 
     
     // Object that will contain the local state
-    var todo = {};
+    var trackingStorage = {};
 
-    // Create or update the todo localStorage entry
-    if (localStorage.getItem('todo')) {
-        todo = JSON.parse(localStorage.getItem('todo'));
+    // Create or update the trackingStorage localStorage entry
+    if (localStorage.getItem('trackingStorage')) {
+        trackingStorage = JSON.parse(localStorage.getItem('trackingStorage'));
+    }
+
+    // Crear datos si no existen
+    if (!localStorage.getItem('trackingStorage')) {
+        localStorage.setItem('trackingStorage',
+            JSON.stringify(
+                { "15651631528400": { "hotel_id": "234", "hotel_name": "Hotel 1", "hotel_chain": "Piedra", "hotel_type": "Web oficial", "analytics_ua": "UA-123-F", "analytics_type": "Asíncrono", "analytics_account": "Analytics 1", "analytics_status": "Inactivo", "gtm_id": "5", "gtm_status": "Activo", "DT_RowId": "15651631528400" }, "15651633496580": { "hotel_id": "234", "hotel_name": "Hotel 1", "hotel_chain": "Piedra", "hotel_type": "Web oficial", "analytics_ua": "UA-345-Z", "analytics_type": "Universal", "analytics_account": "Analytics", "analytics_status": "Inactivo", "gtm_id": "7", "gtm_status": "Inactivo", "DT_RowId": "15651633496580" }, "15651688696620": { "hotel_id": "235", "hotel_name": "Hotel 2", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "UA-345-X", "analytics_type": "Universal", "analytics_account": "", "analytics_status": "Activo", "gtm_id": "8", "gtm_status": "Activo", "DT_RowId": "15651688696620" }, "15651718939500": { "hotel_id": "234", "hotel_name": "Hotel 1", "hotel_chain": "Piedra", "hotel_type": "Web oficial", "analytics_ua": "UA-111-C", "analytics_type": "Asíncrono", "analytics_account": "Analytics 2", "analytics_status": "Activo", "gtm_id": "1", "gtm_status": "Activo", "DT_RowId": "15651718939500" }, "15652553192620": { "hotel_id": "235", "hotel_name": "Hotel 2", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "DT_RowId": "15652553192620" }, "15652553694220": { "hotel_id": "492", "hotel_name": "Hotel 3", "hotel_chain": "Tenedor", "hotel_type": "Motor", "analytics_ua": "UA-643-X", "analytics_type": "Asíncrono", "analytics_account": "Analytics", "analytics_status": "Inactivo", "gtm_id": "45", "gtm_status": "Inactivo", "DT_RowId": "15652553694220" }, "15652554125920": { "hotel_id": "492", "hotel_name": "Hotel 3", "hotel_chain": "Tenedor", "hotel_type": "Motor", "analytics_ua": "UA-021-F", "analytics_type": "Universal", "analytics_account": "Analytics 2", "analytics_status": "Activo", "gtm_id": "4", "gtm_status": "Inactivo", "DT_RowId": "15652554125920" }, "15652554514560": { "hotel_id": "932", "hotel_name": "Hotel 4", "hotel_chain": "", "hotel_type": "Motor", "analytics_ua": "UA-431-B", "analytics_type": "Universal", "analytics_account": "Analytics", "analytics_status": "Activo", "gtm_id": "2", "gtm_status": "Inactivo", "DT_RowId": "15652554514560" }, "15652555000560": { "hotel_id": "532", "hotel_name": "Hotel 5", "hotel_chain": "Tomate", "hotel_type": "Motor", "analytics_ua": "UA-432-N", "analytics_type": "Asíncrono", "analytics_account": "Analytics 2", "analytics_status": "Inactivo", "gtm_id": "6", "gtm_status": "Activo", "DT_RowId": "15652555000560" }, "15652555456450": { "hotel_id": "532", "hotel_name": "Hotel 5", "hotel_chain": "Tomate", "hotel_type": "Motor", "analytics_ua": "UA-646-R", "analytics_type": "Asíncrono", "analytics_account": "Analytics 2", "analytics_status": "Inactivo", "gtm_id": "9", "gtm_status": "Activo", "DT_RowId": "15652555456450" }, "15652556125590": { "hotel_id": "661", "hotel_name": "Hotel 6", "hotel_chain": "Felpudo", "hotel_type": "Motor", "analytics_ua": "UA-232-P", "analytics_type": "Universal", "analytics_account": "Analytics 2", "analytics_status": "Inactivo", "gtm_id": "3", "gtm_status": "Activo", "DT_RowId": "15652556125590" }, "15652556569040": { "hotel_id": "661", "hotel_name": "Hotel 6", "hotel_chain": "Felpudo", "hotel_type": "Motor", "analytics_ua": "UA-214-X", "analytics_type": "Universal", "analytics_account": "Analytics 5", "analytics_status": "Activo", "gtm_id": "6", "gtm_status": "Inactivo", "DT_RowId": "15652556569040" } }
+            )
+        )
     }
 
     // Set up the editor
@@ -72,25 +81,25 @@ $(document).ready(function () {
                     var id = dateKey + '' + key;
 
                     value.DT_RowId = id;
-                    todo[id] = value;
+                    trackingStorage[id] = value;
                     output.data.push(value);
                 });
             } else if (d.action === 'edit') {
                 // Update each edited item with the data submitted
                 $.each(d.data, function (id, value) {
                     value.DT_RowId = id;
-                    $.extend(todo[id], value);
-                    output.data.push(todo[id]);
+                    $.extend(trackingStorage[id], value);
+                    output.data.push(trackingStorage[id]);
                 });
             } else if (d.action === 'remove') {
                 // Remove items from the object
                 $.each(d.data, function (id) {
-                    delete todo[id];
+                    delete trackingStorage[id];
                 });
             }
 
-            // Store the latest `todo` object for next reload
-            localStorage.setItem('todo', JSON.stringify(todo));
+            // Store the latest `trackingStorage` object for next reload
+            localStorage.setItem('trackingStorage', JSON.stringify(trackingStorage));
 
             // Show Editor what has changed
             successCallback(output);
@@ -136,7 +145,7 @@ $(document).ready(function () {
 
         // edit
         dom: "Bfrtip",
-        data: $.map(todo, function (value, key) {
+        data: $.map(trackingStorage, function (value, key) {
             return value;
         }),
         columns: [{ // Checkbox select column
@@ -247,7 +256,7 @@ $(document).ready(function () {
 
         if (table.rows({ selected: true, page: 'current' })[0].length ) {
 
-            table.rows('.selected').deselect();
+            table.rows('.selected', { page: 'current' }).deselect();
         } else {
 
             table.rows({ page: 'current' }).select();
