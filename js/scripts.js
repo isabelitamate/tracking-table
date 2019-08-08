@@ -1,4 +1,4 @@
-var editor; // use a global for the submit and return data rendering in the examples
+var editor; // use a global for the submit and return data rendering in the trackings
 var groupColumn = 1;
 
 $(document).ready(function () {
@@ -14,23 +14,23 @@ $(document).ready(function () {
 
     // Set up the editor
     editor = new $.fn.dataTable.Editor({
-        table: "#example",
+        table: "#tracking",
         fields: [{
-        //     label: "ID:",
-        //     name: "hotel_id"
-        // }, {
-        //     label: "Nombre:",
-        //     name: "hotel_name"
-        // }, {
-        //     label: "Cadena:",
-        //     name: "hotel_chain"
-        // }, {
-        //     label: "Tipo:",
-        //     name: "hotel_type",
-        //     type: "select",
-        //     def: "Web oficial",
-        //     options: ['Web oficial', 'Motor']
-        // }, {
+            label: "ID:",
+            name: "hotel_id"
+        }, {
+            label: "Nombre:",
+            name: "hotel_name"
+        }, {
+            label: "Cadena:",
+            name: "hotel_chain"
+        }, {
+            label: "Tipo:",
+            name: "hotel_type",
+            type: "select",
+            def: "Web oficial",
+            options: ['Web oficial', 'Motor']
+        }, {
             label: "Analytics UA:",
             name: "analytics_ua"
         }, {
@@ -98,7 +98,7 @@ $(document).ready(function () {
     });
 
     // Initialise the DataTable
-    var table = $('#example').DataTable({
+    var table = $('#tracking').DataTable({
 
 
         // Columnas
