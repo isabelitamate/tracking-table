@@ -46,7 +46,8 @@ table thead tr:not(:last-child) {
 [role='row']+[role='row'] td:nth-child(1),
 [role='row']+[role='row'] td:nth-child(2),
 [role='row']+[role='row'] td:nth-child(3),
-[role='row']+[role='row'] td:nth-child(4) {
+[role='row']+[role='row'] td:nth-child(4),
+[role='row']+[role='row'] td:nth-child(5) {
     opacity: 0;
     visibility: hidden;
 }
