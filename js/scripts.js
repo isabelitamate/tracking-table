@@ -205,7 +205,7 @@ $(document).ready(function () {
         scrollX: true,
 
         // edit
-        dom: "Bfrtip",
+        dom: "<'flex-space-between default-box'fB>rt<'flex-space-between tracking-footer'ip>",
         data: $.map(trackingStorage, function (value, key) {
             return value;
         }),
