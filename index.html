@@ -7,14 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
     <title>Editor tracking - Ajax override - using localStorage for the data source</title>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> -->
     <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css">
-	<link rel="stylesheet" type="text/css" href="css/editor.dataTables.min.css">
-	<!-- <link rel="stylesheet" type="text/css" href="css/styles.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.3.0/css/select.dataTables.min.css"> -->
+	<!-- <link rel="stylesheet" type="text/css" href="css/editor.dataTables.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="css/bootstrap_extranet.css">
 	<link rel="stylesheet" type="text/css" href="css/extranetguide.css">
 	<link rel="stylesheet" type="text/css" href="css/guidestyles.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
 
 
 
@@ -34,66 +34,62 @@
 
 	<main role="main" class="main">
 
-<div class="container-fluid">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-10 col-lg-offset-1">
 
-	<div class="row">
-
-
-		<div class="col-lg-10 col-lg-offset-1">
-
-			<h1>Tracking pixel</h1>
-			<p>Texto texto texto</p>
+					<h1>Tracking pixel</h1>
+					<p>Texto texto texto</p>
 
 
-				<div class="btn-wrapper">
-					<button id="save" class="btn btn-success" type="button">Guardar</button>
+					<div class="btn-wrapper">
+						<button id="save" class="btn btn-success" type="button">Guardar</button>
+					</div>
+
+					<table id="tracking" class="display" cellspacing="0" width="100%">
+						<thead>
+							<tr>
+								<th></th>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Cadena</th>
+								<th>Tipo</th>
+								<th colspan="4">Google Analytics</th>
+								<th colspan="2">GTM</th>
+								<th colspan="4">Google ADS</th>
+								<th colspan="2">Bing</th>
+								<th colspan="2">Affilied</th>
+								<th>Comentarios</th>
+							</tr>
+							<tr>
+								<th><button role="button" class="js-multi-select">Select/Deselect all</button></th>
+								<th colspan="4"></th>
+								<!-- Analytics -->
+								<th>UA</th>
+								<th>Tipo</th>
+								<th>Serv.Account</th>
+								<th>Status</th>
+								<!-- GTM -->
+								<th>ID</th>
+								<th>Status</th>
+								<!-- Ads -->
+								<th>ID</th>
+								<th>Conv. Label</th>
+								<th>Ext. Campain</th>
+								<th>Status</th>
+								<!-- bing -->
+								<th>ID</th>
+								<th>Status</th>
+								<!-- Affilied -->
+								<th>ID</th>
+								<th>Status</th>
+								<!-- Comentarios -->
+								<th></th>
+							</tr>
+						</thead>
+					</table>
 				</div>
-
-                <table id="tracking" class="display" cellspacing="0" width="100%">
-                    <thead>
-						<tr>
-						    <th></th>
-						    <th>ID</th>
-						    <th>Nombre</th>
-						    <th>Cadena</th>
-						    <th>Tipo</th>
-						    <th colspan="4">Google Analytics</th>
-						    <th colspan="2">GTM</th>
-						    <th colspan="4">Google ADS</th>
-						    <th colspan="2">Bing</th>
-						    <th colspan="2">Affilied</th>
-						    <th>Comentarios</th>
-						</tr>
-						<tr>
-						    <th><button role="button" class="js-multi-select">Select/Deselect all</button></th>
-							<th colspan="4"></th>
-							<!-- Analytics -->
-						    <th>UA</th>
-						    <th>Tipo</th>
-						    <th>Serv.Account</th>
-							<th>Status</th>
-							<!-- GTM -->
-						    <th>ID</th>
-							<th>Status</th>
-							<!-- Ads -->
-						    <th>ID</th>
-						    <th>Conv. Label</th>
-						    <th>Ext. Campain</th>
-							<th>Status</th>
-							<!-- bing -->
-							<th>ID</th>
-							<th>Status</th>
-							<!-- Affilied -->
-							<th>ID</th>
-							<th>Status</th>
-							<!-- Comentarios -->
-							<th></th>
-						</tr>
-                    </thead>
-                </table>
-
-            <!-- </section> -->
-        </div>
+			</div>
         </div>
     </main>
 
