@@ -53,4 +53,7 @@ table thead tr:not(:last-child) {
 }
 
 
+td {
+    white-space: nowrap;
+}
 

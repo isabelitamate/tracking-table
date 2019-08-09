@@ -340,17 +340,21 @@ $(document).ready(function () {
 
     table.on('buttons-action', function (e, buttonApi, dataTable, node, config) {
 
-        if ( (buttonApi.text() == 'New') || (buttonApi.text() == 'Edit') ) { // Validation
+        if ( buttonApi.text() == 'New' ) { // NEW form
 
             $('.DTE_Field.required input').attr("required", "true");
             $('.DTE_Field.numeric-input input').attr("type", "number");
+            $('.DTE_Field.no-edit input').attr("disabled", false);
+            $('.DTE_Field.no-edit select').attr("disabled", false);
         }
 
-        if ( buttonApi.text() == 'Edit' ) { // Disable fields on edit form
+        if ( buttonApi.text() == 'Edit' ) { // EDIT form
 
-            $('.DTE_Field.no-edit input').attr("readonly", "true");
-        }
-    
+            $('.DTE_Field.required input').attr("required", "true");
+            $('.DTE_Field.numeric-input input').attr("type", "number");
+            $('.DTE_Field.no-edit input').attr("disabled", true);
+            $('.DTE_Field.no-edit select').attr("disabled", true);
+        }    
     });
 
 
