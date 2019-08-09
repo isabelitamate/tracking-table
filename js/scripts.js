@@ -205,7 +205,7 @@ $(document).ready(function () {
         scrollX: true,
 
         // edit
-        dom: "<'flex-space-between default-box'fB>r<'default-box't><'flex-space-between tracking-footer'ip>",
+        dom: "<'flex-space-between default-box'fB>rt<'flex-space-between tracking-footer'ip>",
         data: $.map(trackingStorage, function (value, key) {
             return value;
         }),
@@ -250,17 +250,17 @@ $(document).ready(function () {
         // select: true,
         buttons: [{
                 extend: "create",
-                className: "",
+                className: "btn btn-primary",
                 editor: editor
             },
             {
                 extend: "edit",
-                className: "",
+                className: "btn btn-primary",
                 editor: editor
             },
             {
                 extend: "remove",
-                className: "",
+                className: "btn btn-primary",
                 editor: editor
             }
         ]
