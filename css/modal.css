@@ -1,0 +1,159 @@
+
+
+
+
+/* .modal-backdrop */
+.DTED_Lightbox_Background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+.DTED_Lightbox_Wrapper {
+    position: fixed;
+    z-index: 1050;
+    top: -200px;
+    left: 0;
+    right: 0;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.DTED_Lightbox_Container {
+    position: relative;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.DTE_Header_Content {
+    padding: 15px 50px 15px 15px;
+    font-weight: normal;
+    font-size: 22px;
+}
+
+.DTED_Lightbox_Close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    opacity: 0.6;
+    color: #868686;
+    cursor: pointer;
+}
+.DTED_Lightbox_Close:hover {
+    color: #000;
+}
+.DTED_Lightbox_Close::before {
+    content: '×';
+}
+
+
+.DTE_Action_Create {
+    height: calc(100vh - 80px);
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.DTE_Body {
+    padding: 20px 20px 30px;
+    flex: 1 1 auto;
+    overflow: auto;
+}
+.DTE_Body_Content {
+    max-height: none!important;
+}
+
+
+.DTE_Footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+}
+
+
+
+.DTE_Form_Content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+}
+.DTE_Field {
+    padding: 5px 10px;
+    width: 50%;
+}
+.DTE_Field_divisor {
+    width: 100%;
+    padding: 15px 10px 10px;
+}
+.DTE_Field_divisor span {
+    display: block;
+    font-size: 1.3em;
+    background: #f0f0f0;
+    padding: 7px;
+}
+
+.DTE_Field_Name_comentarios {
+    width: 100%;
+}
+.DTE_Field_Name_comentarios::before {
+    content: '';
+    display: block;
+    border-top: 1px solid #bbb;
+    margin: 10px 0
+}
+
+
+.DTE_Label {
+    margin-bottom: 7.5px;
+    line-height: 1;
+    font-weight: 400;
+}
+
+
+.DTE_Field_Input input,
+.DTE_Field_Input select {
+    width: 100%;
+    border: none;
+    padding: 0;
+    line-height: 40px;
+    height: 40px;
+    box-shadow: 0 0 0 1px #ccc;
+    text-indent: 10px;
+}
+.DTE_Field_Input textarea {
+    width: 100%;
+    border: none;
+    padding: 10px;
+    box-shadow: 0 0 0 1px #ccc;
+}
+
+.DTE_Field_Info,
+.DTE_Label_Info {
+    color: #9c9c9c;
+    font-size: 0.8em;
+    letter-spacing: 0.1em;
+    margin: 3px 7px 0;
+    display: inline-block;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}

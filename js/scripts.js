@@ -30,91 +30,93 @@ $(document).ready(function () {
     editor = new $.fn.dataTable.Editor({
         table: "#tracking",
         fields: [{
-            label: "ID:",
+            label: "ID",
+            labelInfo: "Required",
             className: "numeric-input required no-edit",
             name: "hotel_id"
         }, {
-            label: "Nombre:",
+            label: "Nombre",
+            labelInfo: "Required",
             className: "required no-edit",
             name: "hotel_name"
         }, {
-            label: "Cadena:",
+            label: "Cadena",
             className: "no-edit",
             name: "hotel_chain"
         }, {
-            label: "Tipo:",
+            label: "Tipo",
             className: "no-edit",
             name: "hotel_type",
             type: "select",
             def: "Web oficial",
             options: ['Web oficial', 'Motor']
         }, {
-            label: "Analytics UA:",
+            label: "UA",
             fieldInfo: "UA-XXXXXX-X",
             name: "analytics_ua"
         }, {
-            label: "Analytics Tipo:",
+            label: "Tipo",
             name: "analytics_type",
             type: "select",
             def: "Asíncrono",
             options: ['Asíncrono', 'Universal']
         }, {
-            label: "Analytics Serv. Account:",
+            label: "Serv. Account",
             name: "analytics_account",
             type: "select",
             def: "ANALYTICS1",
             options: ['ANALYTICS1', 'ANALYTICS2', 'ANALYTICS3', 'ANALYTICS4', 'ANALYTICS5', 'ANALYTICS6', 'ANALYTICS7', 'ANALYTICS8', 'ANALYTICS9', 'ANALYTICS10']
         }, {
-            label: "Analytics Status:",
+            label: "Status",
             name: "analytics_status",
             type: "select",
             def: "Activo",
             options: ['Activo', 'Inactivo']
         }, {
-            label: "GTM ID:",
+            label: "ID",
             fieldInfo: "GTM-XXXXXX",
             name: "gtm_id"
         }, {
-            label: "GTM Status:",
+            label: "Status",
             name: "gtm_status",
             type: "select",
             def: "Activo",
             options: ['Activo', 'Inactivo']
         }, {
-            label: "Ads ID",
+            label: "ID",
             className: "numeric-input",
             name: "ads_id"
         }, {
-            label: "Ads Conv. Label",
+            label: "Conv. Label",
             name: "ads_conv"
         }, {
-            label: "Ads External Campain",
+            label: "External Campain",
             name: "ads_external",
             type: "select",
             def: "No",
             options: ['No', 'Sí']
         }, {
-            label: "Ads Status",
+            label: "Status",
             name: "ads_status",
             type: "select",
             def: "Activo",
             options: ['Activo', 'Inactivo']
         }, {
-            label: "Bing ID",
+            label: "ID",
             className: "numeric-input",
             name: "bing_id"
         }, {
-            label: "Bing Status",
+            label: "Status",
             name: "bing_status",
             type: "select",
             def: "Activo",
             options: ['Activo', 'Inactivo']
         }, {
-            label: "Affilied ID",
+            label: "ID",
             className: "numeric-input",
             name: "affilied_id"
         }, {
-            label: "Affilied Status",
+            label: "Status",
             name: "affilied_status",
             type: "select",
             def: "Activo",
@@ -337,25 +339,64 @@ $(document).ready(function () {
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ FORM MODIFICATIONS
 
+    table.one('buttons-action', function (e, buttonApi, dataTable, node, config) {
+
+        if ((buttonApi.text() == 'New') || (buttonApi.text() == 'Edit')) { // NEW form
+
+            $('.DTE_Field_Name_analytics_ua').before("<div class='DTE_Field_divisor'><span>Google Analytics</span></div>");
+            $('.DTE_Field_Name_gtm_id').before("<div class='DTE_Field_divisor'><span>Google GTM</span></div>");
+            $('.DTE_Field_Name_ads_id').before("<div class='DTE_Field_divisor'><span>Google ADS</span></div>");
+            $('.DTE_Field_Name_bing_id').before("<div class='DTE_Field_divisor'><span>Bing</span></div>");
+            $('.DTE_Field_Name_affilied_id').before("<div class='DTE_Field_divisor'><span>Affilied</span></div>");
+
+            $('.DTE_Field.required input').attr("required", "true");
+            $('.DTE_Field.numeric-input input').attr("type", "number");
+        }
+    });
 
     table.on('buttons-action', function (e, buttonApi, dataTable, node, config) {
 
         if ( buttonApi.text() == 'New' ) { // NEW form
 
-            $('.DTE_Field.required input').attr("required", "true");
-            $('.DTE_Field.numeric-input input').attr("type", "number");
             $('.DTE_Field.no-edit input').attr("disabled", false);
             $('.DTE_Field.no-edit select').attr("disabled", false);
         }
 
         if ( buttonApi.text() == 'Edit' ) { // EDIT form
 
-            $('.DTE_Field.required input').attr("required", "true");
-            $('.DTE_Field.numeric-input input').attr("type", "number");
             $('.DTE_Field.no-edit input').attr("disabled", true);
             $('.DTE_Field.no-edit select').attr("disabled", true);
-        }    
+        }
+
+
+
+        $('.DTE_Form_Buttons button').attr("disabled", true);
+        var noenviasunamierda = false;
+        
+        $('.required input').on('blur', function() {
+            
+            noenviasunamierda = false;
+            $('.required input').each( function() {
+
+                if ($(this).val() == "") {
+                    noenviasunamierda = false;
+                } else {                    
+                    noenviasunamierda = true;
+                }
+            });
+            if ( noenviasunamierda ) {
+                $('.DTE_Form_Buttons button').attr("disabled", true);
+            } else {
+                $('.DTE_Form_Buttons button').attr("disabled", false);
+            }
+        });
+
+
+        
     });
+
+
+
 
 
 
