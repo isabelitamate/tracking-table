@@ -349,6 +349,8 @@ $(document).ready(function () {
 
             $('.DTE_Field.no-edit input').attr("disabled", false);
             $('.DTE_Field.no-edit select').attr("disabled", false);
+
+            $('.DTE_Form_Buttons button').attr("disabled", true); // disable submit button
         
         } else if ( buttonApi.text() == 'Edit' ) { // EDIT form
 
@@ -371,8 +373,6 @@ $(document).ready(function () {
         }
 
         // ----> REQUIRED FIELDS
-
-        $('.DTE_Form_Buttons button').attr("disabled", true);
         
         $('.required input').on('blur', function() {
             

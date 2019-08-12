@@ -1,6 +1,7 @@
 
 
 
+/* ================================================= MODAL LAYOUT */
 
 /* .modal-backdrop */
 .DTED_Lightbox_Background {
@@ -13,6 +14,7 @@
     background-color: rgba(0, 0, 0, .6);
 }
 
+/* modal dialog */
 .DTED_Lightbox_Wrapper {
     position: fixed;
     z-index: 1050;
@@ -24,20 +26,29 @@
     margin: 0 auto;
     padding: 0 20px;
 }
-
 .DTED_Lightbox_Container {
     position: relative;
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
+.DTE_Action_Create,
+.DTE_Action_Edit {
+    height: calc(100vh - 80px);
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+}
+.DTE_Action_Remove {
+    margin: 40px auto;
+}
 
+/* modal header */
 .DTE_Header_Content {
     padding: 15px 50px 15px 15px;
     font-weight: normal;
     font-size: 22px;
 }
-
 .DTED_Lightbox_Close {
     position: absolute;
     top: 0;
@@ -52,21 +63,14 @@
     color: #868686;
     cursor: pointer;
 }
-.DTED_Lightbox_Close:hover {
-    color: #000;
-}
 .DTED_Lightbox_Close::before {
     content: '×';
 }
-
-
-.DTE_Action_Create {
-    height: calc(100vh - 80px);
-    margin: 40px auto;
-    display: flex;
-    flex-direction: column;
+.DTED_Lightbox_Close:hover {
+    color: #000;
 }
 
+/* modal body */
 .DTE_Body {
     padding: 20px 20px 30px;
     flex: 1 1 auto;
@@ -76,7 +80,7 @@
     max-height: none!important;
 }
 
-
+/* modal footer */
 .DTE_Footer {
     padding: 15px;
     text-align: right;
@@ -84,7 +88,9 @@
 }
 
 
+/* ================================================= FORM */
 
+/* columns */
 .DTE_Form_Content {
     display: flex;
     flex-wrap: wrap;
@@ -94,6 +100,11 @@
     padding: 5px 10px;
     width: 50%;
 }
+.DTE_Field_Name_comentarios {
+    width: 100%;
+}
+
+/* divisor */
 .DTE_Field_divisor {
     width: 100%;
     padding: 15px 10px 10px;
@@ -104,10 +115,6 @@
     background: #f0f0f0;
     padding: 7px;
 }
-
-.DTE_Field_Name_comentarios {
-    width: 100%;
-}
 .DTE_Field_Name_comentarios::before {
     content: '';
     display: block;
@@ -115,16 +122,42 @@
     margin: 10px 0
 }
 
-
+/* label */
 .DTE_Label {
     margin-bottom: 7.5px;
     line-height: 1;
     font-weight: 400;
 }
 
+.DTE_Field_Info,
+.DTE_Label_Info,
+.multi-restore {
+    color: #9c9c9c;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    margin: 6px 7px 0;
+    display: block;
+}
+.DTE_Action_Edit .DTE_Field_Info,
+.DTE_Action_Edit .multi-restore {
+    min-height: 12px;
+    line-height: 12px;
+}
+.multi-restore {
+    color: #cd1919;
+}
+.DTE_Label_Info {
+    vertical-align: baseline;
+    display: inline;
+}
+.multi-restore[style*="block"] ~ .DTE_Field_Info {
+    display: none;
+}
 
+/* inputs */
 .DTE_Field_Input input,
-.DTE_Field_Input select {
+.DTE_Field_Input select,
+.multi-value {
     width: 100%;
     border: none;
     padding: 0;
@@ -133,22 +166,16 @@
     box-shadow: 0 0 0 1px #ccc;
     text-indent: 10px;
 }
+.DTE_Field_Name_comentarios .multi-value,
 .DTE_Field_Input textarea {
     width: 100%;
     border: none;
     padding: 10px;
+    line-height: 1;
+    text-indent: 0;
+    min-height: 55px;
     box-shadow: 0 0 0 1px #ccc;
 }
-
-.DTE_Field_Info,
-.DTE_Label_Info {
-    color: #9c9c9c;
-    font-size: 0.8em;
-    letter-spacing: 0.1em;
-    margin: 3px 7px 0;
-    display: inline-block;
-}
-
 input[type=number] {
     -moz-appearance: textfield;
     appearance: textfield;
@@ -156,4 +183,19 @@ input[type=number] {
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
+}
+.no-edit .multi-value,
+input[disabled],
+select[disabled] {
+    background: #f0f0f0;
+    pointer-events: none;
+    cursor: auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+.multi-info {
+    display: none!important;
 }
