@@ -49,16 +49,15 @@ div.dt-buttons,
     float: none;
 }
 
-.dataTables_paginate{
-    position: relative;
-    float: left;
-    padding: 6px 12px;
-    margin-left: -1px;
-    line-height: 1.42857143;
-    color: #337ab7;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
+.dataTables_info{
+    margin: auto 0;
+}
+
+.dataTables_paginate a.disabled{
+    pointer-events: none;
+}
+.dataTables_paginate a.current{
+    pointer-events: none;
 }
 
 /* fin tablas revisado */
@@ -125,3 +124,4 @@ div.dt-buttons,
 .tracking table tbody tr:last-child {
     border-bottom: 0;
 }
+
