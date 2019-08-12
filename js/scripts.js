@@ -284,10 +284,6 @@ $(document).ready(function () {
     });
 
 
-         $('.dataTables_paginate span a:not(.current), .dataTables_paginate .next, .dataTables_paginate .previous').addClass('btn btn-default');
-         $('.dataTables_paginate span a.current').addClass('btn btn-primary');
-
-
     // Activate an inline edit on click of a table cell
 
     table.on('click', 'tbody td.editable', function (e) {
@@ -299,27 +295,24 @@ $(document).ready(function () {
 
 
 
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ PAGINATION
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CUSTOM SELECT
 
-    table.on('select', function (e, dt, row, indexes) { // SELECT GROUP
+    // Styles
+    function paginationStyle() {
+        $('.paginate_button').addClass('btn btn-default');
+        $('.paginate_button.current').addClass('btn btn-primary');
+    } 
+    paginationStyle();
 
-        var target = table.row(indexes).nodes().to$();
-        var next = target.next(); // siguiente row
+    table.on('draw', function () {
+            
+        paginationStyle();
 
-        if (!next.is('.selected, .group')) { // selecciona si no está seleccionada o es group
-
-            table.row(next).select();
-        }
     });
     
-    table.on('deselect', function (e, dt, row, indexes) { // DESELECT GROUP
 
-        var target = table.row(indexes).nodes().to$();
-        var next = target.next(); // siguiente row
-
-        table.row($(next)).deselect(); // deselecciona la siguiente
-    });
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CUSTOM SELECT
 
 
     // Modificaciones en el selector de Datatable
@@ -376,6 +369,24 @@ $(document).ready(function () {
         }
     });
 
+    table.on('select', function (e, dt, row, indexes) { // SELECT GROUP
+
+        var target = table.row(indexes).nodes().to$();
+        var next = target.next(); // siguiente row
+
+        if (!next.is('.selected, .group')) { // selecciona si no está seleccionada o es group
+
+            table.row(next).select();
+        }
+    });
+
+    table.on('deselect', function (e, dt, row, indexes) { // DESELECT GROUP
+
+        var target = table.row(indexes).nodes().to$();
+        var next = target.next(); // siguiente row
+
+        table.row($(next)).deselect(); // deselecciona la siguiente
+    });
 
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ FORM MODIFICATIONS
