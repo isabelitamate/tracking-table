@@ -49,15 +49,30 @@ div.dt-buttons,
     float: none;
 }
 
-
-.dataTables_filter label{
-    margin-right: 20px;
-    color: #bcc2c8;
-}
-
 /* fin tablas revisado */
 
 /*tracking*/
+
+.tracking-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tracking-header label{
+    color: #bcc2c8;
+    margin-bottom: 0;
+    font-weight: normal;
+}
+.tracking-header input{
+    margin-left: 10px;
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+}
 
 
 .tracking {
@@ -80,7 +95,6 @@ div.dt-buttons,
     position: relative;
     display: block;
 }
-
 .tracking table thead th {
     min-height: 45px;
 }
@@ -91,8 +105,6 @@ div.dt-buttons,
 .tracking table tbody td:first-child {
     width: 100px !important;
 }
-
-
 .tracking table thead th,
 .tracking table tbody td {
     min-width: 85px;
