@@ -55,11 +55,58 @@ div.dt-buttons,
     color: #bcc2c8;
 }
 
-/* button.dt-button,
-div.dt-button,
-a.dt-button {
-    color: #fff;
-    background-color: #5aa0c5;
-    background-image: none;
-    border: 1px solid #58a3c4;
-} */
+/* fin tablas revisado */
+
+/*tracking*/
+
+
+.tracking {
+    position: relative;
+    display: block;
+    /* max-height: calc(100vh - 258px);
+    overflow-y: scroll; */
+}
+.tracking .dataTables_scrollBody{
+    /* overflow: hidden; */
+}
+
+.tracking table {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.tracking table thead {
+    position: relative;
+    display: block;
+}
+
+.tracking table thead th {
+    min-height: 45px;
+}
+.tracking table tbody td {
+    min-height: 20px;
+}
+.tracking table thead th:first-child,
+.tracking table tbody td:first-child {
+    width: 100px !important;
+}
+
+
+.tracking table thead th,
+.tracking table tbody td {
+    min-width: 85px;
+    height: 40px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+.tracking table thead th:last-child,
+.tracking table tbody td:last-child {
+    border-right: 0;
+}
+.tracking table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+.tracking table tbody tr:last-child {
+    border-bottom: 0;
+}

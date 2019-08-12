@@ -1,0 +1,533 @@
+
+/* -------------------- iconos -------------------- */
+@font-face {
+	font-family: 'MiraiIcons';
+    src:  url('../fonts/mirai-extranet.eot');
+    src:  url('../fonts/mirai-extranet.eot#iefix') format('embedded-opentype'),
+          url('../fonts/mirai-extranet.ttf') format('truetype'),
+          url('../fonts/mirai-extranet.woff') format('woff'),
+          url('../fonts/mirai-extranet.svg#mirai-extranet') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.reviews-icon:before {content: "\e914";}
+.copy-icon:before {content: "\e915";}
+.arrow-down-icon:before {content: "\e90c";}
+.arrow-up-icon:before {content: "\e90d";}
+.bed-icon:before {content: "\e908";}
+.close-icon:before {content: "\e90e";}
+.conditions-icon:before {content: "\e904";}
+.credit-card-icon:before {content: "\e907";}
+.diamond-icon:before {content: "\e903";}
+.document-icon:before {content: "\e90b";}
+.home-icon:before {content: "\e913";}
+.hotel-icon:before {content: "\e905";}
+.info-icon:before {content: "\e900";}
+.international-icon:before {content: "\e90f";}
+.offers-icon:before {content: "\e909";}
+.padlock-icon:before {content: "\e90a";}
+.preferences-icon:before {content: "\e910";}
+.price-icon:before {content: "\e906";}
+.report-icon:before {content: "\e902";}
+.revision-icon:before {content: "\e912";}
+.search-icon:before {content: "\e916";}
+.user02-icon:before {content: "\e911";}
+.rates-icon:before {content: "\e901";}
+
+span.icon {
+    display: inline-block;
+    vertical-align: top;
+    -webkit-transition: color .2s ease-in-out;
+    -moz-transition: color .2s ease-in-out;
+    -o-transition: color .2s ease-in-out;
+    transition: color .2s ease-in-out;
+}
+a:hover span.icon {
+    color: #FFF;
+}
+span.icon:before, #selectHotel:after, #userName:after, .subMenu:after {
+    font-family: 'MiraiIcons';
+    display: block;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: normal;
+    font-size: inherit;
+    line-height: inherit;
+    color: inherit;
+}
+/* -------------------------------------------------- */
+body {
+    background: none !important;
+    border: 0; 
+    padding: 0; 
+    margin: 200px 0 0 !important; 
+    font-family: Arial, Helvetica, sans-serif;
+    height: auto !important;
+    line-height: normal;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+div#scroll {
+    overflow: initial;
+}
+
+button:focus {
+    outline: none;
+}
+
+header {
+    width: 100%;
+    background-color: #FFF;
+    position: fixed;
+    top: 0;
+    z-index: 1040;
+}
+header #preNav {
+    border-top: 1px solid #ee293a;
+    padding: 20px 30px;
+}
+header #preNav #logoMirai{
+    width: 110px;
+    vertical-align: middle;
+}
+
+/* -------------------- dropdown -------------------- */
+header .dropdown {
+    display: none;
+    position: absolute;
+    background-color: #FFF;
+    z-index: 1000;
+    left: 0;
+    top: 100%;
+    margin-top: 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgba(41,51,57,.5);
+}
+header .dropdown.show {
+    display: block;
+}
+header .dropdownArrow {
+    position: absolute;
+    top: 0;
+    width: 16px;
+    z-index: 1001;
+}
+header  .dropdownArrow:after,
+header  .dropdownArrow:before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 100%;
+    margin-left: 1px;
+    width: 0;
+    height: 0;
+    border-bottom: 8px solid #fff;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+}
+header .dropdownArrow:before {
+    margin-left: 0 !important;
+    border-bottom-color: #d2d2d2 !important;
+    border-width: 9px !important;
+}
+/* -------------------------------------------------- */
+
+/* ---------- nombre del hoteles ---------- */
+header #preNav #nameHotelWrapper {
+    margin-left: 35px;
+    padding: 10px;
+    font-size: 18px;
+    position: relative;
+    display: inline-block;
+}
+/* -------------------------------------------------- */
+
+/* ---------- selector de hoteles ---------- */
+header #preNav #selectHotelWrapper {
+    margin-left: 10px;
+    position: relative;
+    display: inline-block;
+}
+header #preNav #selectHotelWrapper .ratesInfo {
+    font-size: 13px;
+    background-color: #ffeaed;
+    border-radius: 50px;
+    padding: 10px 15px;
+    margin-left: 10px;
+}
+header #preNav #selectHotelWrapper .ratesInfo .btn-circle{
+    width: 13px;
+    height: 13px;
+    padding: 4px 0;
+    border-radius: 15px;
+    cursor: auto;
+    border: 1px solid white;
+    margin-right: 5px;
+    margin-bottom: 1px;
+    background-color: #cd1d3c;
+    box-shadow: 0px 0px 0px 1px #ddd;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(22%, rgba(241,111,92,1)), color-stop(64%, rgba(195,19,53,1)), color-stop(100%, rgba(231,56,39,1)));
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,111,92,1) 22%, rgba(195,19,53,1) 64%, rgba(231,56,39,1) 100%);
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,111,92,1) 22%, rgba(195,19,53,1) 64%, rgba(231,56,39,1) 100%);
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(241,111,92,1) 22%, rgba(195,19,53,1) 64%, rgba(231,56,39,1) 100%);
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(241,111,92,1) 22%, rgba(195,19,53,1) 64%, rgba(231,56,39,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e73827', GradientType=0 );
+    display:inline-block;
+    vertical-align:middle;
+}
+header #preNav #selectHotelWrapper .ratesInfo.active{
+    background-color: #e0f3d7;
+}
+header #preNav #selectHotelWrapper .ratesInfo.active .btn-circle{
+    background-color: #63b64b;
+    background: rgba(210,255,82,1);
+    background: -moz-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(184,237,79,1) 20%, rgba(78,167,67,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(210,255,82,1)), color-stop(20%, rgba(184,237,79,1)), color-stop(100%, rgba(78,167,67,1)));
+    background: -webkit-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(184,237,79,1) 20%, rgba(78,167,67,1) 100%);
+    background: -o-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(184,237,79,1) 20%, rgba(78,167,67,1) 100%);
+    background: -ms-linear-gradient(top, rgba(210,255,82,1) 0%, rgba(184,237,79,1) 20%, rgba(78,167,67,1) 100%);
+    background: linear-gradient(to bottom, rgba(210,255,82,1) 0%, rgba(184,237,79,1) 20%, rgba(78,167,67,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2ff52', endColorstr='#4ea743', GradientType=0 );
+}
+
+header #preNav #selectHotel {
+    background-color: #F9F9F9;
+    border: 0;
+    vertical-align: middle;
+    padding: 15px;
+    font-size: 16px;
+    min-width: 400px;
+    text-align: left;
+    cursor: pointer;
+}
+header #preNav #selectHotel:after {
+    content: '\e90c';
+    float:right;
+    color: #85878B;
+    margin-left: 25px;
+}
+header #preNav #selectHotel.active:after {
+    content: '\e90d';
+}
+header #preNav #selectHotel .search-icon {
+    margin-right: 15px;
+    color: #B3B9C1;
+}
+header #preNav #selectHotel .arrow-down-icon {
+    float: right;
+}
+header #preNav #dropdownHotels {
+        display: none;
+}
+header #preNav #dropdownHotels.show {
+        display: block;
+}
+header #preNav #dropdownHotels .dropdownArrow {
+    left: 40px;
+}
+header #preNav #dropdownHotels #closeDropdownHotels {
+    float: right;
+    margin: 10px 10px 0 0;
+    padding: 0;
+    background-color: #FFF;
+    border: 0;
+    cursor: pointer;
+    color: #666;
+}
+header #preNav #dropdownHotels  ul {
+    list-style-type: none;
+    margin: 40px 10px 20px;
+    padding: 0 10px 0;
+    min-width: 580px;
+    font-size: 14px;
+    max-height: 600px;
+    overflow-y: auto;
+}
+header #preNav #dropdownHotels ul li {
+    position: relative;
+    border-bottom: 1px solid #DEE4EB;
+}
+header #preNav #dropdownHotels ul li:last-child {
+    border-bottom: 0px;
+}
+header #preNav #dropdownHotels ul a {
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding: 9px 0;
+}
+header #preNav #dropdownHotels ul a:hover {
+    color: #272A32;
+}
+header #preNav #dropdownHotels ul li:hover {
+    background-color: #F2F8FF;
+}
+header #preNav #dropdownHotels ul a span {
+    float: right;
+}
+header #preNav #dropdownHotels ul a:first-child {
+    padding: 9px 4px;
+    margin-right: 25px;
+}
+header #preNav #dropdownHotels ul a.copyToClipboard {
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    padding: 0 !important;
+    border-bottom: none !important;
+    color: #999;
+}
+header #preNav #dropdownHotels ul a.copyToClipboard:hover span.icon {
+        color: #272A32;
+}
+/* -------------------------------------------------- */
+
+/* ---------- login wrapper ---------- */
+header #preNav  #loginWrapper {
+    float: right;
+}
+header #preNav  #loginWrapper > a,
+header #preNav  #loginWrapper > button {
+    font-size: 13px;
+}
+header #preNav  #loginWrapper #showAllHotels {
+    text-decoration: none;
+    vertical-align: middle;
+    font-size: 13px;
+    padding: 15px 20px 15px 0;
+    display: inline-block;
+    color: #3798C2;
+    border-right: 1px solid #E1E1E1;
+}
+header #preNav  #loginWrapper #showAllHotels:hover {
+    color:#0D5474;
+    cursor:pointer;
+}
+header #preNav  #loginWrapper #showRatesModeSwitcher{
+    color: #3798C2;
+    padding-right: 10px;
+    vertical-align: middle;
+}
+header #preNav  #loginWrapper #showRatesModeSwitcher:hover {
+    color:#0D5474;
+    cursor:pointer;
+}
+header #preNav  #loginWrapper #sessionWrapper {
+    position:relative;
+    display: inline-block;
+}
+header #preNav  #loginWrapper #userName {
+    background-color: #FFF;
+    border: 0;
+    vertical-align: middle;
+    font-size: 13px;
+    padding: 13px 0 14px 15px;
+    text-align: left;
+    cursor: pointer;
+    color: #666;
+}
+header #preNav  #loginWrapper #userName:after {
+    content: '\e90c';
+    float:right;
+    font-size: 9px;
+             margin: 6px 0 0 10px;
+}
+header #preNav  #loginWrapper #userName.active:after {
+    content: '\e90d';
+    margin-top: 5px;
+}
+header #preNav  #loginWrapper #userName .user02-icon {
+    font-size: 18px;
+    vertical-align: sub;
+}
+header #preNav  #loginWrapper #dropdownSession {
+    display: none;
+    left: auto;
+    right: 0;
+    top: 85%;
+}
+header #preNav  #loginWrapper #dropdownSession.show {
+    display: block;
+}
+header #preNav  #loginWrapper #dropdownSession .dropdownArrow {
+    right: 40px;
+}
+header #preNav #loginWrapper #dropdownSession  ul {
+    list-style-type: none;
+    padding: 0;
+    margin:0;
+    min-width: 170px;
+}
+header #preNav #loginWrapper #dropdownSession ul a {
+    color: #666;
+    text-decoration: none;
+    display: block;
+    padding: 10px 20px;
+    font-size: 13px;
+}
+header #preNav #loginWrapper #dropdownSession ul a:hover {
+    background-color: #F2F8FF;
+    color: #272A32;
+}
+header #preNav #loginWrapper #dropdownSession ul li:last-child {
+    border-top: 1px solid #DEE4EB;
+}
+/* -------------------------------------------------- */
+
+/* ---------- navegaciÃƒÂ³n ---------- */
+header nav {
+    background-color: #41444D;
+    color: #BBC9D7;
+    padding: 0 30px;
+    position: relative;
+}
+header nav ul {
+    margin: 0;
+    padding: 0;
+}
+header nav > ul {
+    overflow: hidden;
+}
+header nav ul li {
+    text-align: center;
+    padding: 0;
+    list-style: none;
+    display: inline-block;
+}
+header nav > ul > li {
+    float: left;
+    display: inline;
+}
+header nav ul li a {
+    color: #BBC9D7 !important;
+    text-decoration: none !important;
+    display: inline-block;
+    font-size: 15px;
+    padding: 15px 20px;
+}
+header nav ul li a .icon:before {
+    font-size: 18px;
+}
+header nav ul li ul {
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+header nav ul li.active ul,
+header nav ul li.show ul {
+    display: block;
+}
+header nav ul.hover li.active:not(.show) ul {
+    display: none;
+} 
+header nav ul li a:hover {
+    color: #FFF !important;
+    border-bottom: none;
+}
+header nav ul li.active > a,
+header nav ul li.show > a,
+header nav ul li ul {
+    background-color: #252931;
+    color: #FFF !important;
+}
+header nav ul li.active > a {
+    cursor: default;
+}
+header nav ul li ul li.active a,
+header nav ul li ul li.show a{
+    padding: 15px 20px 11px !important;
+    border-bottom: 4px solid #ee293a;
+    cursor: default;
+    color: #FFF !important;
+}
+header nav > ul > li#menu_mirai {
+    float: right;
+}
+header nav > ul > li:last-child > a {
+    height: 48px;
+}
+header nav ul li a.subMenu:after {
+    content: '\e90c';
+    float:right;
+    font-size: 9px;
+    margin: 5px 0 0 10px;
+}
+header nav ul li.active a.subMenu:after,
+header nav ul li.show a.subMenu:after {
+    content: '\e90d';
+}
+header nav ul.hover li.active:not(.show) a.subMenu:after {
+    content: '\e90c';
+}
+/* -------------------------------------------------- */
+
+
+@media (max-width: 1500px) {
+    header #preNav #dropdownHotels  ul {
+        max-height: 450px;
+    }
+    header nav {
+        padding: 0 10px;
+    }
+    header nav ul li a {
+        font-size: 14px !important;
+    }
+    header nav ul li a .icon:before {
+        font-size: 15px !important;
+    }
+    header nav > ul > li > a {
+        padding: 15px 10px;
+    }
+    header nav > ul > li:last-child > a {
+        height: 46px;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    header #preNav #selectHotel {
+        max-width: 650px;
+    }
+}
+
+@media (max-width: 1150px) {
+    header nav ul li a {
+        font-size: 13px !important;
+    }
+    header nav ul li a .icon:before {
+        font-size: 14px !important;
+    }
+    header nav > ul > li > a {
+        padding: 15px 6px;
+    }
+    header nav > ul > li:last-child > a {
+        height: 15px;
+    }
+    header nav ul li a.subMenu:after {
+        margin-left:4px
+    }
+    header nav > ul > li:last-child > a img {
+        width: 45px;
+    }
+    header #preNav #selectHotel {
+        max-width: 520px;
+    }
+}
+
+/* --- clases de bootstrap css necesarias para el header */
+.btn-link,button.btn-link:active,button.btn-link:visited,button.btn-link:focus{
+    background-color:transparent;
+    border:none;
+    color:#3798C2;
+}
+.btn-link:hover{
+    color:#0D5474;
+}
