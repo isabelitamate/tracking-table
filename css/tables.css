@@ -1,0 +1,527 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin-top: 0 !important;
+    background-color: #f6f6f6 !important;
+}
+
+header {
+    position: static;
+    margin-bottom: 47px;
+}
+
+
+/* comun todas tablas */
+#calendarAndTableWrapper,
+.calendarAndTableWrapper {
+    position: relative;
+}
+
+.bootstrap-select button {
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.filter-table-wrapper {
+    margin-top: 20px;
+}
+
+.filter-table-wrapper label {
+    margin-right: 20px;
+    color: #bcc2c8;
+}
+
+.month-position {
+    position: absolute;
+    top: 24px;
+    left: 45px;
+    z-index: 3;
+}
+
+.month-position button {
+    background-color: transparent;
+}
+
+.month-position .fa {
+    color: #3798c2;
+    font-size: 26px;
+}
+
+.previous-month:disabled,
+.previous-month:disabled .fa {
+    color: #eee;
+    opacity: 1;
+    cursor: default;
+}
+
+.next-month:disabled,
+.next-month:disabled .fa {
+    color: #eee;
+    opacity: 1;
+    cursor: default;
+}
+
+.cookieCheck {
+    font-weight: normal;
+}
+
+.table-message-bad-combination,
+.table-message-filter-no-selected {
+    display: none;
+}
+
+.table-message-bad-combination td p,
+.table-message-filter-no-selected td p {
+    padding: 10px 30px;
+}
+
+
+/* específico availability */
+
+.flex-space-between a.btn+button.btn {
+    margin-left: 20px;
+}
+
+.btn-zero {
+    background-color: #FE8C8C;
+    color: #B90017;
+    border: 0;
+    width: 100%;
+    height: 50px;
+}
+
+.btn-soldout {
+    background-color: #FBE68B;
+    color: #BAA54A;
+    border: 0;
+    width: 100%;
+    height: 50px;
+}
+
+.btn-zero:hover {
+    background-color: rgb(233, 110, 110);
+}
+
+.btn-soldout:hover {
+    background-color: #f8de6bf3;
+}
+
+/* fin tabla availability */
+
+/* tablas */
+.calendar {
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.bg-weekend {
+    background-color: #EFF3F7;
+}
+
+.btn-collapse {
+    background-color: transparent;
+    font-weight: bold;
+    width: 100%;
+    text-align: left;
+}
+
+.btn-collapse:before {
+    margin-right: 5px;
+    font-family: FontAwesome;
+    font-size: 16px;
+    line-height: 1;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/** pendiente changes **/
+/* .btn-collapse:before {
+    padding: 9px 12px;
+    border-radius: 50%;
+}
+.btn-collapse:hover{
+    * color:blue; *
+}
+.btn-collapse:hover:before{
+    background-color: #eff0f0;
+    color:#87898d;
+} */
+.btn-collapse:focus,
+.btn-collapse:active:focus,
+.btn.active:focus,
+.btn-collapse.focus,
+.btn-collapse:active,
+.btn-collapse:active.focus,
+.btn-collapse.active.focus {
+    /* * color: #3798c2 * */
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.collapse-show:before {
+    content: "\f106";
+}
+
+.collapse-hidden:before {
+    content: "\f107";
+}
+
+
+.calendar table {
+    position: relative;
+    width: 100%;
+    display: block;
+    /**    margin-top: 20px;**/
+    padding: 0 !important;
+    border-collapse: collapse;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.calendar table thead {
+    position: relative;
+    display: block;
+}
+
+.calendar table thead th {
+    min-height: 85px;
+}
+
+.calendar table tbody {
+    position: relative;
+    display: block;
+    max-height: calc(100vh - 258px);
+    overflow: scroll;
+}
+
+.calendar table tbody td {
+    min-height: 50px;
+}
+
+.calendar table thead th:first-child,
+.calendar table tbody td:first-child {
+    position: relative;
+    display: block;
+    width: 450px;
+    padding: 10px;
+    background-color: #fff;
+    text-align: left;
+}
+
+.calendar table thead th:first-child {
+    line-height: 2;
+}
+
+.calendar table thead th:first-child>button {
+    color: #3798c2;
+    background-color: transparent;
+}
+
+.calendar table thead th,
+.calendar table tbody td {
+    min-width: 85px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+.calendar table thead th:last-child,
+.calendar table tbody td:last-child {
+    border-right: 0;
+}
+
+.calendar table thead tr,
+.calendar table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.calendar tbody tr[data-child]:hover td {
+    background-color: #e0f3fb;
+}
+
+.calendar table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+.calendar table tbody tr[data-child] td:first-child {
+    padding: 15px 40px;
+    z-index: 2;
+}
+
+.calendar table tbody tr[data-child] {
+    display: none;
+}
+
+.calendar table tbody tr[data-child].shown-by-filter {
+    display: table-row;
+}
+
+.calendar table tbody tr[data-child].shown-by-filter.hidden-by-collapse {
+    display: none;
+}
+
+.calendar table tbody tr[data-parent] {
+    border-bottom: 1px solid #ddd;
+}
+
+.calendar table tbody tr[data-parent].hidden-by-collapse {
+    display: none;
+}
+
+.calendar table tbody tr.uniqueTr td:first-child {
+    padding: 15px 40px;
+    font-weight: bold;
+}
+
+.calendar table tbody tr.hidden-by-collapse {
+    display: none;
+}
+
+.calendar table tbody tr[data-parent] td {
+    border-color: transparent;
+}
+
+/* fin tablas revisado */
+/** integrar **/
+.calendar table tbody td input[type="text"] {
+    width: 50px;
+    display: inline-block;
+}
+
+.calendar table tbody tr td:nth-child(1) span:first-child {
+    font-weight: normal;
+    display: block;
+    clear: right;
+}
+
+.calendar time {
+    font-size: 30px;
+    display: inline-block;
+    text-align: center;
+}
+
+.calendar time span {
+    font-size: 11px;
+    padding: 0;
+    display: block;
+    font-weight: normal;
+}
+
+.calendar time span:nth-child(2) {
+    text-transform: uppercase;
+}
+
+.calendar input[type="text"] {
+    text-align: center;
+    padding: 5px 0;
+    box-shadow: 0 0 0;
+}
+
+.calendar input[type="text"]:focus,
+.calendar .form-control:focus {
+    box-shadow: 0 0 0;
+    -webkit-box-shadow: 0 0 0;
+    background-color: #fff;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #5cabcd;
+}
+
+.calendar .checkbox-container.green-red-checkbox span {
+    font-size: 12px;
+}
+
+
+
+
+
+.availability-calendar table tbody td input[type="text"][value="0"] {
+    display: none;
+}
+
+.availability-calendar table tbody td input:not([value="0"])~.btn-zero {
+    display: none
+}
+
+.availability-calendar table tbody td input[value="0"][data-soldout="true"]~.btn-zero {
+    display: none;
+}
+
+/* table tbody tr[data-parent] td:not(first-child){
+    border:none;
+} */
+.input-modified,
+.input-saved.input-modified {
+    background-color: #fefdd2;
+    border-color: #fcea97;
+}
+
+.input-modified:focus,
+.input-saved.input-modified {
+    border-color: #fcea97 !important;
+}
+
+.input-error,
+.input-saved.input-error {
+    background-color: #fad2d2;
+    border-color: #db6566;
+}
+
+.input-error:focus,
+.input-saved.input-error:focus {
+    border-color: #db6566 !important;
+}
+
+.input-saved {
+    background-color: #c6f5c7;
+    border-color: #78cf55;
+}
+
+.input-saved:focus {
+    border-color: #78cf55 !important;
+}
+
+[data-child="hab1"]>td:not>span:first-child {
+    display: none;
+}
+
+[data-child="hab1"]>td.text-td>span:first-child {
+    display: block !important;
+}
+
+.text-td {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+input[type=checkbox] {
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+}
+
+/* end of table styles */
+
+/* Specific checkbox*/
+.green-red-checkbox input[type="checkbox"]+.checkbox-ico:before {
+    border-radius: 100%;
+    background: #D83E3E;
+    border: 0;
+    margin: 0;
+}
+
+.green-red-checkbox input[type="checkbox"]:checked+.checkbox-ico:before {
+    background-color: #B5DB8B;
+    content: '';
+}
+
+/* bootstrap select styles */
+.bootstrap-select.filter-select {
+    margin-right: 10px;
+}
+
+.bootstrap-select button.actions-btn,
+.month-position button.actions-btn {
+    border: none;
+    font-size: 11px;
+    box-shadow: none;
+    padding: 0 5px;
+}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.glyphicon-ok-sign {
+    color: #3798c2;
+}
+
+
+
+
+
+/*tracking*/
+
+.tracking table {
+    position: relative;
+    width: 100%;
+    display: block;
+    padding: 0 !important;
+    border-collapse: collapse;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.tracking table thead {
+    position: relative;
+    display: block;
+}
+
+.tracking table thead th {
+    min-height: 45px;
+}
+
+.tracking table tbody {
+    position: relative;
+    display: block;
+    max-height: calc(100vh - 258px);
+    overflow: scroll;
+}
+
+.tracking table tbody td {
+    min-height: 20px;
+}
+
+.tracking table thead th:first-child,
+.tracking table tbody td:first-child {
+    position: relative;
+    display: block;
+    width: 200px !important;
+    padding: 10px;
+    background-color: #fff;
+    text-align: left;
+}
+
+.tracking table thead th:first-child {
+    line-height: 2;
+}
+
+.tracking table thead th:first-child>button {
+    color: #3798c2;
+    background-color: transparent;
+}
+
+.tracking table thead th,
+.tracking table tbody td {
+    min-width: 85px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+}
+
+.tracking table thead th:last-child,
+.tracking table tbody td:last-child {
+    border-right: 0;
+}
+
+.tracking table thead tr,
+.tracking table tbody tr {
+    border-bottom: 1px solid #ddd;
+}
+
+.tracking tbody tr[data-child]:hover td {
+    background-color: #e0f3fb;
+}
+
+.tracking table tbody tr:last-child {
+    border-bottom: 0;
+}
+
+.tracking table tbody tr.hidden-by-collapse {
+    display: none;
+}
+
