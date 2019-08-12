@@ -339,9 +339,26 @@ $(document).ready(function () {
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ FORM MODIFICATIONS
 
-    table.one('buttons-action', function (e, buttonApi, dataTable, node, config) {
 
-        if ((buttonApi.text() == 'New') || (buttonApi.text() == 'Edit')) { // NEW form
+    table.on('buttons-action', function (e, buttonApi, dataTable, node, config) {
+
+
+        // ----> DISABLE / ENABLE HOTEL INPUTS
+
+        if ( buttonApi.text() == 'New' ) { // NEW form
+
+            $('.DTE_Field.no-edit input').attr("disabled", false);
+            $('.DTE_Field.no-edit select').attr("disabled", false);
+        
+        } else if ( buttonApi.text() == 'Edit' ) { // EDIT form
+
+            $('.DTE_Field.no-edit input').attr("disabled", true);
+            $('.DTE_Field.no-edit select').attr("disabled", true);
+        }
+
+        // ----> FORM DIVISOR AND TYPE FIELDS
+
+        if ((buttonApi.text() == 'New') || (buttonApi.text() == 'Edit') && (!$('DTE_Field_divisor').length)) { // NEW form
 
             $('.DTE_Field_Name_analytics_ua').before("<div class='DTE_Field_divisor'><span>Google Analytics</span></div>");
             $('.DTE_Field_Name_gtm_id').before("<div class='DTE_Field_divisor'><span>Google GTM</span></div>");
@@ -352,43 +369,22 @@ $(document).ready(function () {
             $('.DTE_Field.required input').attr("required", "true");
             $('.DTE_Field.numeric-input input').attr("type", "number");
         }
-    });
 
-    table.on('buttons-action', function (e, buttonApi, dataTable, node, config) {
-
-        if ( buttonApi.text() == 'New' ) { // NEW form
-
-            $('.DTE_Field.no-edit input').attr("disabled", false);
-            $('.DTE_Field.no-edit select').attr("disabled", false);
-        }
-
-        if ( buttonApi.text() == 'Edit' ) { // EDIT form
-
-            $('.DTE_Field.no-edit input').attr("disabled", true);
-            $('.DTE_Field.no-edit select').attr("disabled", true);
-        }
-
-
+        // ----> REQUIRED FIELDS
 
         $('.DTE_Form_Buttons button').attr("disabled", true);
-        var noenviasunamierda = false;
         
         $('.required input').on('blur', function() {
             
-            noenviasunamierda = false;
             $('.required input').each( function() {
 
-                if ($(this).val() == "") {
-                    noenviasunamierda = false;
-                } else {                    
-                    noenviasunamierda = true;
+                if ( $(this).val() == "" ) {
+                    $('.DTE_Form_Buttons button').attr("disabled", true);
+                    return false;
+                } else {
+                    $('.DTE_Form_Buttons button').attr("disabled", false);
                 }
             });
-            if ( noenviasunamierda ) {
-                $('.DTE_Form_Buttons button').attr("disabled", true);
-            } else {
-                $('.DTE_Form_Buttons button').attr("disabled", false);
-            }
         });
 
 
