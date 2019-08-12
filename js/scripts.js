@@ -368,11 +368,12 @@ $(document).ready(function () {
 
             table.rows('.selected', { page: 'current' }).deselect();
             $(this).removeClass('some-selected');
+            $(this).removeClass('all-selected');
         } else {
 
             table.rows({ page: 'current' }).select();
+            $(this).addClass('all-selected');
         }
-        $(this).toggleClass('all-selected');
     });
 
 
