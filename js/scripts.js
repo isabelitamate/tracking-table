@@ -207,7 +207,7 @@ $(document).ready(function () {
         scrollX: true,
 
         // edit
-        dom: "<'flex-space-between default-box'fB>rt<'flex-space-between tracking-footer'ip>",
+        dom: "<'tracking-header default-box' fB>r<'tracking't><'flex-space-between tracking-footer'ip>",
         data: $.map(trackingStorage, function (value, key) {
             return value;
         }),
