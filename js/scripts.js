@@ -281,12 +281,11 @@ $(document).ready(function () {
                 editor: editor
             }
         ]
-      
-
     });
 
 
-   
+         $('.dataTables_paginate span a:not(.current), .dataTables_paginate .next, .dataTables_paginate .previous').addClass('btn btn-default');
+         $('.dataTables_paginate span a.current').addClass('btn btn-primary');
 
 
     // Activate an inline edit on click of a table cell
