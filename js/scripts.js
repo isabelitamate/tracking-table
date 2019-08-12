@@ -350,7 +350,7 @@ $(document).ready(function () {
             $('.DTE_Field.no-edit input').attr("disabled", false);
             $('.DTE_Field.no-edit select').attr("disabled", false);
 
-            $('.DTE_Form_Buttons button').attr("disabled", true); // disable submit button
+            $('.DTE_Form_Buttons button').attr("disabled", true); // disable submit button for require inputs validation
         
         } else if ( buttonApi.text() == 'Edit' ) { // EDIT form
 
@@ -360,7 +360,7 @@ $(document).ready(function () {
 
         // ----> FORM DIVISOR AND TYPE FIELDS
 
-        if ((buttonApi.text() == 'New') || (buttonApi.text() == 'Edit') && (!$('DTE_Field_divisor').length)) { // NEW form
+        if ((buttonApi.text() == 'New') || (buttonApi.text() == 'Edit') && (!$('DTE_Field_divisor').length)) { // NEW & EDIT form
 
             $('.DTE_Field_Name_analytics_ua').before("<div class='DTE_Field_divisor'><span>Google Analytics</span></div>");
             $('.DTE_Field_Name_gtm_id').before("<div class='DTE_Field_divisor'><span>Google GTM</span></div>");
@@ -372,7 +372,7 @@ $(document).ready(function () {
             $('.DTE_Field.numeric-input input').attr("type", "number");
         }
 
-        // ----> REQUIRED FIELDS
+        // ----> REQUIRED INPUTS 
         
         $('.required input').on('blur', function() {
             
@@ -388,7 +388,7 @@ $(document).ready(function () {
         });
 
 
-        
+
     });
 
 
