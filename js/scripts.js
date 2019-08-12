@@ -3,7 +3,7 @@ var groupColumn = 1;
 
 $(document).ready(function () {
 
-    
+
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ LOCALSTORAGE
 
     // Object that will contain the local state
@@ -18,9 +18,23 @@ $(document).ready(function () {
     if (!localStorage.getItem('trackingStorage')) {
         localStorage.setItem('trackingStorage',
             JSON.stringify(
-                { "15653328449160": { "hotel_id": "123", "hotel_name": "Hotel 1", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "UA-111111-1", "analytics_type": "Universal", "analytics_account": "ANALYTICS2", "analytics_status": "Inactivo", "gtm_id": "", "gtm_status": "Inactivo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Inactivo", "bing_id": "", "bing_status": "Inactivo", "affilied_id": "", "affilied_status": "Inactivo", "comentarios": "Muy bueno", "DT_RowId": "15653328449160" }, "15653329647440": { "hotel_id": "123", "hotel_name": "Hotel 1", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "UA-111112-2", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS4", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Inactivo", "ads_id": "4564", "ads_conv": "jffsadfASDGdhsdfgASDFasdfa", "ads_external": "Sí", "ads_status": "Activo", "bing_id": "", "bing_status": "Inactivo", "affilied_id": "", "affilied_status": "Inactivo", "comentarios": "", "DT_RowId": "15653329647440" }, "15653331388420": { "hotel_id": "123", "hotel_name": "Hotel 1", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "UA-222222-2", "analytics_type": "Universal", "analytics_account": "ANALYTICS6", "analytics_status": "Inactivo", "gtm_id": "GTM-1111111", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653331388420" }, "15653332064350": { "hotel_id": "234", "hotel_name": "Hotel 2", "hotel_chain": "Cuerda", "hotel_type": "Motor", "analytics_ua": "UA-222222-1", "analytics_type": "Universal", "analytics_account": "ANALYTICS7", "analytics_status": "Activo", "gtm_id": "GTM-333444", "gtm_status": "Activo", "ads_id": "45645", "ads_conv": "dfASDFFAfafff75aff5afAF", "ads_external": "Sí", "ads_status": "Activo", "bing_id": "455645", "bing_status": "Activo", "affilied_id": "789964", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653332064350" }, "15653332762410": { "hotel_id": "345", "hotel_name": "Hotel 3", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "UA-4668789-7", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS4", "analytics_status": "Activo", "gtm_id": "GTM-789456", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653332762410" }, "15653334252190": { "hotel_id": "345", "hotel_name": "Hotel 3", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "GTM-456789", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "4556465", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris pulvinar metus orci, in vulputate purus tempor eu. Nam molestie erat eu magna mattis sodales. Proin et arcu pellentesque sapien vulputate sagittis non nec purus. Curabitur id felis dictum, aliquet orci ac, commodo est.", "DT_RowId": "15653334252190" }, "15653337812340": { "hotel_id": "456", "hotel_name": "Hotel 4", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "UA-789456-5", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "464654", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653337812340" }, "15653338186360": { "hotel_id": "456", "hotel_name": "Hotel 4", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "465465", "bing_status": "Activo", "affilied_id": "465456", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653338186360" }, "15653338464860": { "hotel_id": "456", "hotel_name": "Hotel 4", "hotel_chain": "Muro", "hotel_type": "Web oficial", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "GTM-456456", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653338464860" }, "15653339235410": { "hotel_id": "567", "hotel_name": "Hotel 5", "hotel_chain": "Flor", "hotel_type": "Web oficial", "analytics_ua": "UA-789456-3", "analytics_type": "Universal", "analytics_account": "ANALYTICS8", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "456456", "bing_status": "Activo", "affilied_id": "789778", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653339235410" }, "15653339602980": { "hotel_id": "567", "hotel_name": "Hotel 5", "hotel_chain": "Flor", "hotel_type": "Motor", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "GTM-789456", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653339602980" }, "15653339965290": { "hotel_id": "678", "hotel_name": "Hotel 6", "hotel_chain": "Pez", "hotel_type": "Motor", "analytics_ua": "UA-435245-6", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653339965290" } }            )
+                { "15653328449160": { "hotel_id": "123", "hotel_name": "Hotel 1", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "UA-111111-1", "analytics_type": "Universal", "analytics_account": "ANALYTICS2", "analytics_status": "Inactivo", "gtm_id": "", "gtm_status": "Inactivo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Inactivo", "bing_id": "", "bing_status": "Inactivo", "affilied_id": "", "affilied_status": "Inactivo", "comentarios": "Muy bueno", "DT_RowId": "15653328449160" }, "15653329647440": { "hotel_id": "123", "hotel_name": "Hotel 1", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "UA-111112-2", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS4", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Inactivo", "ads_id": "4564", "ads_conv": "jffsadfASDGdhsdfgASDFasdfa", "ads_external": "Sí", "ads_status": "Activo", "bing_id": "", "bing_status": "Inactivo", "affilied_id": "", "affilied_status": "Inactivo", "comentarios": "", "DT_RowId": "15653329647440" }, "15653331388420": { "hotel_id": "123", "hotel_name": "Hotel 1", "hotel_chain": "Palo", "hotel_type": "Web oficial", "analytics_ua": "UA-222222-2", "analytics_type": "Universal", "analytics_account": "ANALYTICS6", "analytics_status": "Inactivo", "gtm_id": "GTM-1111111", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653331388420" }, "15653332064350": { "hotel_id": "234", "hotel_name": "Hotel 2", "hotel_chain": "Cuerda", "hotel_type": "Motor", "analytics_ua": "UA-222222-1", "analytics_type": "Universal", "analytics_account": "ANALYTICS7", "analytics_status": "Activo", "gtm_id": "GTM-333444", "gtm_status": "Activo", "ads_id": "45645", "ads_conv": "dfASDFFAfafff75aff5afAF", "ads_external": "Sí", "ads_status": "Activo", "bing_id": "455645", "bing_status": "Activo", "affilied_id": "789964", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653332064350" }, "15653332762410": { "hotel_id": "345", "hotel_name": "Hotel 3", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "UA-4668789-7", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS4", "analytics_status": "Activo", "gtm_id": "GTM-789456", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653332762410" }, "15653334252190": { "hotel_id": "345", "hotel_name": "Hotel 3", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "GTM-456789", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "4556465", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "Lorem ipsum dolor sit amet, commodo est.", "DT_RowId": "15653334252190" }, "15653337812340": { "hotel_id": "456", "hotel_name": "Hotel 4", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "UA-789456-5", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "464654", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653337812340" }, "15653338186360": { "hotel_id": "456", "hotel_name": "Hotel 4", "hotel_chain": "Muro", "hotel_type": "Motor", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "465465", "bing_status": "Activo", "affilied_id": "465456", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653338186360" }, "15653338464860": { "hotel_id": "456", "hotel_name": "Hotel 4", "hotel_chain": "Muro", "hotel_type": "Web oficial", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "GTM-456456", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653338464860" }, "15653339235410": { "hotel_id": "567", "hotel_name": "Hotel 5", "hotel_chain": "Flor", "hotel_type": "Web oficial", "analytics_ua": "UA-789456-3", "analytics_type": "Universal", "analytics_account": "ANALYTICS8", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "456456", "bing_status": "Activo", "affilied_id": "789778", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653339235410" }, "15653339602980": { "hotel_id": "567", "hotel_name": "Hotel 5", "hotel_chain": "Flor", "hotel_type": "Motor", "analytics_ua": "", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "GTM-789456", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653339602980" }, "15653339965290": { "hotel_id": "678", "hotel_name": "Hotel 6", "hotel_chain": "Pez", "hotel_type": "Motor", "analytics_ua": "UA-435245-6", "analytics_type": "Asíncrono", "analytics_account": "ANALYTICS1", "analytics_status": "Activo", "gtm_id": "", "gtm_status": "Activo", "ads_id": "", "ads_conv": "", "ads_external": "No", "ads_status": "Activo", "bing_id": "", "bing_status": "Activo", "affilied_id": "", "affilied_status": "Activo", "comentarios": "", "DT_RowId": "15653339965290" } } )
         )
         location.reload(true);
+
+
+        // $.ajax({
+        //     type: 'GET',
+        //     dataType: 'json',
+        //     url: 'js/data.json',
+        //     data: data,
+        //     async: false,
+        //     success: function (data) {
+        //         localStorage.setItem('trackingStorage', JSON.stringify(data))
+        //         location.reload(true);
+        //     }
+        // });
+
     }
 
 
@@ -199,6 +213,7 @@ $(document).ready(function () {
                     last = group;
                 }
             });
+
         },
 
 
@@ -266,12 +281,16 @@ $(document).ready(function () {
                 editor: editor
             }
         ]
-
+      
 
     });
 
+
+   
+
+
     // Activate an inline edit on click of a table cell
-    
+
     table.on('click', 'tbody td.editable', function (e) {
         // editor.inline(this);
         editor.inline(this, {
@@ -289,41 +308,41 @@ $(document).ready(function () {
         // console.log('selección');
         var target = table.row(indexes).nodes().to$();
         var next = target.next(); // siguiente row
-        
+
         if (!next.is('.selected, .group')) { // selecciona si no está seleccionada o es group
-            
-            table.row(next).select(); 
+
+            table.row(next).select();
         }
     });
-    
+
     table.on('deselect', function (e, dt, row, indexes) {
 
         // console.log('deselección');
         var target = table.row(indexes).nodes().to$();
         var next = target.next(); // siguiente row
-        
+
         table.row($(next)).deselect(); // deselecciona la siguiente
     });
 
-    
+
     // Modificaciones en el selector de Datatable
 
     table.on('user-select', function (e, dt, type, cell, originalEvent) {
-        
+
         e.preventDefault(); // previene todo
         var target = $(originalEvent.target.closest("tr")); // row target
 
         if (! target.is('.selected')) { // si no está seleccionado se selecciona
-            
+
             table.row( target ).select();
         } else {
 
             table.row( target ).deselect();
         }
     });
-    
+
     // Select / Deselect all
-    
+
     $('.js-multi-select').on('click', function() {
 
         if (table.rows({ selected: true, page: 'current' })[0].length ) {
@@ -388,19 +407,8 @@ $(document).ready(function () {
         });
 
 
-
     });
 
 
-
-
-
-
-
-
-});
-
-
-
-
+  });
 
