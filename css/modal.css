@@ -199,3 +199,40 @@ select[disabled] {
 .multi-info {
     display: none!important;
 }
+
+
+
+
+
+
+
+
+
+/* ------------------------------------- CHECKBOX */
+
+.checkbox-container::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    vertical-align: text-bottom;
+    margin-right: 5px;
+    width: 15px;
+    height: 15px;
+    transition: all 250ms ease;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #b4b4b4;
+    border-radius: 15%;
+    color: #f4f4f4;
+    background: #f4f4f4;
+}
+
+tr.selected .checkbox-container::before {
+    content: '\f00c';
+    font-family: 'fontawesome';
+    font-size: 11px;
+    line-height: 13px;
+    background-color: #5aa0c5;
+    border-color: #5aa0c5;
+}

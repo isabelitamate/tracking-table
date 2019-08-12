@@ -214,7 +214,7 @@ $(document).ready(function () {
         columns: [{ // Checkbox select column
                 data: null,
                 defaultContent: '',
-                className: 'select-checkbox',
+                className: 'checkbox-container',
                 orderable: false
             },
 
@@ -246,8 +246,8 @@ $(document).ready(function () {
             editOnFocus: true
         },
         select: {
-            style: 'os',
-            selector: 'td.select-checkbox'
+            style: '',
+            selector: 'td.checkbox-container'
         },
         // select: true,
         buttons: [{
