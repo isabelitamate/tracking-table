@@ -228,6 +228,8 @@ select[disabled] {
     background: #f4f4f4;
 }
 
+.js-multi-select.all-selected::before,
+.js-multi-select.some-selected::before,
 tr.selected .checkbox-container::before {
     content: '\f00c';
     font-family: 'fontawesome';
@@ -235,4 +237,8 @@ tr.selected .checkbox-container::before {
     line-height: 13px;
     background-color: #5aa0c5;
     border-color: #5aa0c5;
+}
+
+.js-multi-select.some-selected::before {
+    content: '\f068';
 }

@@ -219,7 +219,7 @@ $(document).ready(function () {
 
         // Scroll
 
-        scrollX: true,
+        // scrollX: true,
 
         // edit
         dom: "<'tracking-header default-box' fB>r<'tracking't><'flex-space-between tracking-footer'ip>",
@@ -302,9 +302,8 @@ $(document).ready(function () {
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CUSTOM SELECT
 
-    table.on('select', function (e, dt, row, indexes) {
+    table.on('select', function (e, dt, row, indexes) { // SELECT GROUP
 
-        // console.log('selección');
         var target = table.row(indexes).nodes().to$();
         var next = target.next(); // siguiente row
 
@@ -313,10 +312,14 @@ $(document).ready(function () {
             table.row(next).select();
         }
     });
+<<<<<<< Updated upstream
 
     table.on('deselect', function (e, dt, row, indexes) {
+=======
+    
+    table.on('deselect', function (e, dt, row, indexes) { // DESELECT GROUP
+>>>>>>> Stashed changes
 
-        // console.log('deselección');
         var target = table.row(indexes).nodes().to$();
         var next = target.next(); // siguiente row
 
@@ -326,8 +329,13 @@ $(document).ready(function () {
 
     // Modificaciones en el selector de Datatable
 
+<<<<<<< Updated upstream
     table.on('user-select', function (e, dt, type, cell, originalEvent) {
 
+=======
+    table.on('user-select', function (e, dt, type, cell, originalEvent) { // CUSTOM BASIC SELECT/ DESELECT (target item)
+        
+>>>>>>> Stashed changes
         e.preventDefault(); // previene todo
         var target = $(originalEvent.target.closest("tr")); // row target
 
@@ -338,12 +346,34 @@ $(document).ready(function () {
 
             table.row( target ).deselect();
         }
+
+        // Modify select all
+
+        if (table.rows({ selected: true, page: 'current' })[0].length == table.rows({ page: 'current' })[0].length) {
+
+            console.log('todos');
+            $('.js-multi-select').removeClass('some-selected');
+            $('.js-multi-select').addClass('all-selected');
+
+        } else if ( table.rows({ selected: true, page: 'current' })[0].length ) {
+
+            console.log('alguno');
+            $('.js-multi-select').removeClass('all-selected');
+            $('.js-multi-select').addClass('some-selected');
+
+        } else if (table.rows({ selected: false, page: 'current' })[0].length) {
+
+            console.log('no queda ninguno');
+            $('.js-multi-select').removeClass('all-selected');
+            $('.js-multi-select').removeClass('some-selected');
+        } 
+
     });
 
     // Select / Deselect all
 
     $('.js-multi-select').on('click', function() {
-
+        
         if (table.rows({ selected: true, page: 'current' })[0].length ) {
 
             table.rows('.selected', { page: 'current' }).deselect();
@@ -351,6 +381,7 @@ $(document).ready(function () {
 
             table.rows({ page: 'current' }).select();
         }
+        $(this).toggleClass('all-selected');
     });
 
 
