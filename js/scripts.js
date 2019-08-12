@@ -312,13 +312,8 @@ $(document).ready(function () {
             table.row(next).select();
         }
     });
-<<<<<<< Updated upstream
-
-    table.on('deselect', function (e, dt, row, indexes) {
-=======
     
     table.on('deselect', function (e, dt, row, indexes) { // DESELECT GROUP
->>>>>>> Stashed changes
 
         var target = table.row(indexes).nodes().to$();
         var next = target.next(); // siguiente row
@@ -329,13 +324,8 @@ $(document).ready(function () {
 
     // Modificaciones en el selector de Datatable
 
-<<<<<<< Updated upstream
-    table.on('user-select', function (e, dt, type, cell, originalEvent) {
-
-=======
     table.on('user-select', function (e, dt, type, cell, originalEvent) { // CUSTOM BASIC SELECT/ DESELECT (target item)
         
->>>>>>> Stashed changes
         e.preventDefault(); // previene todo
         var target = $(originalEvent.target.closest("tr")); // row target
 
@@ -377,6 +367,7 @@ $(document).ready(function () {
         if (table.rows({ selected: true, page: 'current' })[0].length ) {
 
             table.rows('.selected', { page: 'current' }).deselect();
+            $(this).removeClass('some-selected');
         } else {
 
             table.rows({ page: 'current' }).select();
