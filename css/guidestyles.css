@@ -1,23 +1,22 @@
+
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++ GENERIC */
+
+
 body{
     margin-top: 0 !important;
     background-color: #f6f6f6 !important;
 }
 
-.group {
-    display: none;
-    background-color: tomato !important;
-}
-
-[role='row']+[role='row'] td:nth-child(1),
-[role='row']+[role='row'] td:nth-child(2),
-[role='row']+[role='row'] td:nth-child(3),
-[role='row']+[role='row'] td:nth-child(4) {
-    opacity: 0;
-    visibility: hidden;
-}
 
 
-/** estilos tabla tipo extranet **/
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++ BUTTONS */
+
 
 .btn-wrapper {
     text-align: right;
@@ -25,53 +24,57 @@ body{
 }
 
 
-.dataTable{
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++ TABLE */
+
+
+
+
+/* ----------- Estilos generales  */
+
+
+.dataTable {
     background-color: #fff;
     border-radius: 2px;
     border: 1px solid #ddd;
+}
+
+.tracking {
+    position: relative;
     overflow-x: scroll;
+    /* max-height: calc(100vh - 258px); */
 }
 
-table thead tr:not(:last-child) {
-    border-bottom: 1px solid #ddd;
-}
-
-
-.tracking-footer{
-    background-color:#fff;
-    border: 1px solid #ddd;
-    border-top: none;
-    margin-bottom: 20px;
-    padding: 15px;
+.tracking table {
+    position: relative;
+    width: 100%;
 }
 
 
 
-.dataTables_info{
-    margin: auto 0;
-}
-.dataTables_paginate a.disabled,
-.dataTables_paginate a.current {
-    pointer-events: none;
-}
+/* ---------------------- Header */
 
-/* fin tablas revisado */
-
-/*tracking*/
-
-.tracking-header{
+.tracking-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
 }
 
-.tracking-header label{
+.tracking table thead {
+    position: relative;
+}
+
+.tracking-header label {
     color: #bcc2c8;
     margin-bottom: 0;
     font-weight: normal;
 }
-.tracking-header input{
+
+.tracking-header input {
     margin-left: 10px;
     border-radius: 2px;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
@@ -81,47 +84,70 @@ table thead tr:not(:last-child) {
     padding: 6px 12px;
 }
 
-
-.tracking {
-    position: relative;
-    display: block;
-    /* max-height: calc(100vh - 258px);
-    overflow-y: scroll; */
+table thead tr:not(:last-child) {
+    border-bottom: 1px solid #ddd;
 }
 
-.tracking table {
-    position: relative;
-    width: 100%;
-    display: block;
+
+
+/* ---------------------- Footer */
+
+
+.tracking-footer {
+    background-color:#fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    margin-bottom: 20px;
+    padding: 15px;
+}
+.dataTables_info {
+    margin: auto 0;
+}
+.dataTables_paginate a.disabled,
+.dataTables_paginate a.current {
+    pointer-events: none;
 }
 
-.tracking table thead {
-    position: relative;
-    display: block;
-}
+
+
+/* ---------------------- CELLS */
+
+
+
 .tracking table thead th,
 .tracking table tbody td {
     min-width: 125px;
     padding: 15px;
     border-right: 1px solid #ddd;
     text-align: center;
+    white-space: nowrap;
 }
+
 .tracking table thead th:last-child,
 .tracking table tbody td:last-child {
     border-right: 0;
 }
+
 .tracking table tbody tr {
     border-bottom: 1px solid #ddd;
 }
+
 .tracking table tbody tr:last-child {
     border-bottom: 0;
 }
 
-.dataTables_filter{
+
+
+/* ------------------- FILTRO DE BÚSQUEDA */
+
+
+.dataTables_filter {
     position: relative;
 }
-
-.dataTables_filter label::before{
+.dataTables_filter input {
+    padding-left: 25px;
+}
+.dataTables_filter label::before {
     content: "\f002";
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -134,6 +160,20 @@ table thead tr:not(:last-child) {
     left: 18px;
     z-index: 2;
 }
-.dataTables_filter input{
-    padding-left: 25px;
+
+
+
+/* ----------- Grupos de rows */
+
+
+.group {
+    display: none;
+}
+
+[role='row']+[role='row'] td:nth-child(1),
+[role='row']+[role='row'] td:nth-child(2),
+[role='row']+[role='row'] td:nth-child(3),
+[role='row']+[role='row'] td:nth-child(4) {
+    opacity: 0;
+    visibility: hidden;
 }
