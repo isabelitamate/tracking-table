@@ -189,10 +189,12 @@ $(document).ready(function () {
 
         // Columnas
 
-        "columnDefs": [{
-            "visible": true,
-            "targets": groupColumn
-        }],
+        "columnDefs": [
+        // {   ---------------------- esto vale para algo? parece que hace visible la columna 'ID hotel'.
+        //     "visible": true,
+        //     "targets": groupColumn
+        // },
+        ],
         "order": [
             [groupColumn, 'asc']
         ],
@@ -208,7 +210,7 @@ $(document).ready(function () {
             }).data().each(function (group, i) {
                 if (last !== group) {
                     $(rows).eq(i).before(
-                        '<tr class="group"><td colspan="1">' + group + '</td></tr>'
+                        '<tr class="group"><td>' + group + '</td></tr>'
                     );
                     last = group;
                 }
@@ -222,7 +224,7 @@ $(document).ready(function () {
         scrollX: false,
 
         // edit
-        dom: "<'tracking-header default-box' fB>r<'tracking't><'flex-space-between tracking-footer'ip>",
+        dom: "<'tracking-header flex-space-between' fB>r<'tracking't><'tracking-footer flex-space-between'ip>",
         data: $.map(trackingStorage, function (value, key) {
             return value;
         }),
@@ -233,24 +235,24 @@ $(document).ready(function () {
                 orderable: false
             },
 
-            { data: "hotel_id" },
-            { data: "hotel_name" },
+            { data: "hotel_id", className: 'cell-id_hotel' },
+            { data: "hotel_name", className: 'cell-name_hotel' },
             { data: "hotel_chain" },
             { data: "hotel_type" },
-            { data: "analytics_ua", className: 'editable', orderable: false },
-            { data: "analytics_type", className: 'editable', orderable: false },
-            { data: "analytics_account", className: 'editable', orderable: false },
-            { data: "analytics_status", className: 'editable', orderable: false },
-            { data: "gtm_id", className: 'editable', orderable: false },
-            { data: "gtm_status", className: 'editable', orderable: false },
-            { data: "ads_id", className: 'editable', orderable: false },
-            { data: "ads_conv", className: 'editable', orderable: false },
-            { data: "ads_external", className: 'editable', orderable: false },
-            { data: "ads_status", className: 'editable', orderable: false },
-            { data: "bing_id", className: 'editable', orderable: false },
-            { data: "bing_status", className: 'editable', orderable: false },
-            { data: "affilied_id", className: 'editable', orderable: false },
-            { data: "affilied_status", className: 'editable', orderable: false },
+            { data: "analytics_ua", className: 'cell-analytics editable', orderable: false },
+            { data: "analytics_type", className: 'cell-analytics editable', orderable: false },
+            { data: "analytics_account", className: 'cell-analytics editable', orderable: false },
+            { data: "analytics_status", className: 'cell-analytics editable', orderable: false },
+            { data: "gtm_id", className: 'cell-gtm editable', orderable: false },
+            { data: "gtm_status", className: 'cell-gtm editable', orderable: false },
+            { data: "ads_id", className: 'cell-ads editable', orderable: false },
+            { data: "ads_conv", className: 'cell-ads editable', orderable: false },
+            { data: "ads_external", className: 'cell-ads editable', orderable: false },
+            { data: "ads_status", className: 'cell-ads editable', orderable: false },
+            { data: "bing_id", className: 'cell-bing editable', orderable: false },
+            { data: "bing_status", className: 'cell-bing editable', orderable: false },
+            { data: "affilied_id", className: 'cell-affilied editable', orderable: false },
+            { data: "affilied_status", className: 'cell-affilied editable', orderable: false },
             { data: "comentarios", className: 'editable' }
          ],
         order: [1, 'asc'],
@@ -265,18 +267,19 @@ $(document).ready(function () {
             selector: 'td.checkbox-container'
         },
         // select: true,
-        buttons: [{
-                extend: "create",
-                className: "btn btn-primary",
-                editor: editor
-            },
+        buttons: [
             {
                 extend: "edit",
-                className: "btn btn-primary",
+                className: "btn btn-default",
                 editor: editor
             },
             {
                 extend: "remove",
+                className: "btn btn-default",
+                editor: editor
+            },
+            {
+                extend: "create",
                 className: "btn btn-primary",
                 editor: editor
             }
@@ -311,7 +314,7 @@ $(document).ready(function () {
     table.on('draw', function () {
             
         paginationStyle();
-
+        $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', $(this).scrollLeft() + 'px');
     });
     
 
@@ -423,7 +426,7 @@ $(document).ready(function () {
             $('.DTE_Field_Name_bing_id').before("<div class='DTE_Field_divisor'><span>Bing</span></div>");
             $('.DTE_Field_Name_affilied_id').before("<div class='DTE_Field_divisor'><span>Affilied</span></div>");
 
-            $('.DTE_Field.required input').attr("required", "true");
+            // $('.DTE_Field.required input').attr("required", "true");
             $('.DTE_Field.numeric-input input').attr("type", "number");
         }
 
@@ -442,6 +445,38 @@ $(document).ready(function () {
             });
         });
 
+
+    });
+
+
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ STICKY
+
+    // ¡¡¡¡¡¡ REVISAR !!!!! 
+    // La sombra que queda es mejor ponerla con un nuevo elemento.
+
+    // Detecta si se está haciendo scroll y mueve las 3 primera columnas
+    
+    $('.tracking').scroll(function() {
+
+        if ( $(this).scrollLeft() > 0 ) {
+
+            if (!$(this).hasClass('scrolling')) { // Añadimos la clase 'scrolling' si no la tiene (para poner la sombra que queda por poner)
+                $(this).addClass('scrolling');
+            }
+            $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', $(this).scrollLeft() + 'px');
+
+        } else if ( $(this).scrollLeft() == 0 ) { // Quitamos clase 'scrolling'
+
+            $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', 'auto');
+
+            $(this).removeClass('scrolling');
+        }       
+    });
+
+    table.on('draw', function () { // actualiza en el cambio de página
+
+        $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', $('.tracking').scrollLeft() + 'px');
 
     });
 

@@ -96,11 +96,11 @@
     flex-wrap: wrap;
     margin: 0 -5px;
 }
-.DTE_Field {
+.DTE_Form_Content .DTE_Field {
     padding: 5px 10px;
     width: 50%;
 }
-.DTE_Field_Name_comentarios {
+.DTE_Form_Content .DTE_Field_Name_comentarios {
     width: 100%;
 }
 
@@ -216,7 +216,6 @@ select[disabled] {
     position: relative;
     box-sizing: border-box;
     vertical-align: text-bottom;
-    margin-right: 5px;
     width: 15px;
     height: 15px;
     transition: all 250ms ease;
@@ -226,6 +225,7 @@ select[disabled] {
     border-radius: 15%;
     color: #f4f4f4;
     background: #f4f4f4;
+    text-align: center;
 }
 
 .js-multi-select.all-selected::before,
@@ -241,6 +241,7 @@ tr.selected .checkbox-container::before {
 
 .js-multi-select.some-selected::before {
     content: '\f068';
+    font-size: 9px;
 }
 
 
