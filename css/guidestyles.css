@@ -24,10 +24,12 @@ body{
     margin: 20px 0;
 }
 
-.dataTables_scroll{
+
+.dataTable{
     background-color: #fff;
     border-radius: 2px;
     border: 1px solid #ddd;
+    overflow-x: scroll;
 }
 
 table thead tr:not(:last-child) {
@@ -43,20 +45,13 @@ table thead tr:not(:last-child) {
     padding: 15px;
 }
 
-div.dt-buttons,
-.dataTables_wrapper .dataTables_filter {
-    position: initial;
-    float: none;
-}
+
 
 .dataTables_info{
     margin: auto 0;
 }
-
-.dataTables_paginate a.disabled{
-    pointer-events: none;
-}
-.dataTables_paginate a.current{
+.dataTables_paginate a.disabled,
+.dataTables_paginate a.current {
     pointer-events: none;
 }
 
@@ -93,9 +88,6 @@ div.dt-buttons,
     /* max-height: calc(100vh - 258px);
     overflow-y: scroll; */
 }
-.tracking .dataTables_scrollBody{
-    /* overflow: hidden; */
-}
 
 .tracking table {
     position: relative;
@@ -125,3 +117,23 @@ div.dt-buttons,
     border-bottom: 0;
 }
 
+.dataTables_filter{
+    position: relative;
+}
+
+.dataTables_filter label::before{
+    content: "\f002";
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    top: 8px;
+    left: 18px;
+    z-index: 2;
+}
+.dataTables_filter input{
+    padding-left: 25px;
+}

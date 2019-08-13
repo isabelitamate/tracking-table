@@ -219,7 +219,7 @@ $(document).ready(function () {
 
         // Scroll
 
-        // scrollX: true,
+        scrollX: false,
 
         // edit
         dom: "<'tracking-header default-box' fB>r<'tracking't><'flex-space-between tracking-footer'ip>",
@@ -280,7 +280,10 @@ $(document).ready(function () {
                 className: "btn btn-primary",
                 editor: editor
             }
-        ]
+        ],
+        oLanguage: {
+            sSearch: ""
+        }
     });
 
 
