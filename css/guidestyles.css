@@ -37,6 +37,16 @@ input {
 }
 
 
+.btn-primary:disabled,
+.btn-primary.disabled {
+    filter: grayscale(1);
+}
+
+.btn-default:disabled,
+.btn-default.disabled {
+    filter: grayscale(1);
+    background: #eee;
+}
 
 
 
@@ -80,12 +90,43 @@ input {
 /* ---------------------- Header */
 
 
-.dataTable thead {
+.dataTable thead tr:last-child th,
+.dataTable th[rowspan='2'] {
     border-bottom: 2px solid #777;
 }
 
+.dt-buttons {
+    display: flex;
+}
+.dt-buttons::before {
+    content: "";
+    border-left: 1px solid #ccc;
+    order: 0;
+    margin: 0 20px;
+}
+.dt-buttons .buttons-edit {
+    border-radius: 2px 0 0 2px;
+    order: -1;
+    color: #5aa0c5;
+}
+.dt-buttons .buttons-edit:hover {
+    position: relative;
+    z-index: 2;
+}
+.dt-buttons .buttons-remove {
+    border-radius: 0 2px 2px 0;
+    margin-left: -1px;
+    order: -1;
+    color: #d62101;
+}
 
-
+.tracking-header .btn {
+    padding: 10px 20px;
+}
+.tracking-header input {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
 
 /* ---------------------- Footer */
 
@@ -94,7 +135,8 @@ input {
     color: #666;
 }
 
-/* Pagination */
+
+/* ---------------------- Pagination */
 
 .paginate_button {
     border-radius: 0;
@@ -116,7 +158,10 @@ input {
 
 
 
-/* ---------------------- CELLS */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++ CELLS */
+
+
 
 .dataTable [rowspan] {
     vertical-align: top;
@@ -137,22 +182,17 @@ input {
     width: auto!important; /* ¿ duda: quitamos el ancho JS? */
 }
 
+.dataTable th:not(.checkbox-container),
 .dataTable td:not(.checkbox-container) {
     min-width: 90px;
+    box-shadow: inset 1px 0 #eaeaea;
 }
 .dataTable td:last-child {
     min-width: 500px;
 }
 
-.dataTable th,
-.dataTable td {
-    /* border-right: 1px solid #eaeaea;  */
-    box-shadow: -1px 0 #eaeaea;
-}
-.dataTable tr .cell-name_hotel {
-    box-shadow: -1px 0 #eaeaea, 1px 0 #eaeaea;
-    z-index: 2;
-}
+
+
 
 .dataTable .cell-analytics + .cell-analytics,
 .dataTable .cell-gtm + .cell-gtm,
@@ -179,30 +219,6 @@ tbody .cell-id_hotel {
     color: #5aa0c5;
 }
 
-/* ------------------- FILTRO DE BÚSQUEDA */
-
-
-.dataTables_filter {
-    position: relative;
-}
-.dataTables_filter input {
-    padding-left: 25px;
-}
-.dataTables_filter label::before {
-    content: "\f002";
-    color: #bcc2c8;
-    display: inline-block;
-    font-size: 14px;
-    font-family: 'FontAwesome';
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    position: absolute;
-    top: calc(50% - 7px);
-    left: 7px;
-    z-index: 2;
-}
-
 
 
 /* -------------------  Grupos de rows */
@@ -211,6 +227,7 @@ tbody .cell-id_hotel {
 .group {
     display: none;
 }
+
 tbody [role='row']+[role='row'] .checkbox-container,
 [role='row']+[role='row'] td:nth-child(2),
 [role='row']+[role='row'] td:nth-child(3),
@@ -218,16 +235,95 @@ tbody [role='row']+[role='row'] .checkbox-container,
     color: transparent;
     pointer-events: none;
 }
+
 tbody [role='row']+[role='row'] .checkbox-container::before {
     display: none;
 }
 
 
+/* ------------------- Empty column groups */
+
+.cell-analytics:empty ~ .cell-analytics,
+.cell-gtm:empty ~ .cell-gtm,
+.cell-ads:empty ~ .cell-ads,
+.cell-bing:empty ~ .cell-bing,
+.cell-affilied:empty ~ .cell-affilied {
+    color: #ccc;
+    pointer-events: none;
+}
 
 
 
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++ FILTRO DE BÚSQUEDA */
 
-/* ------------------- EDITABLE EN LÍNEA --> Revisar, clases comunes con la modal */
+
+.dataTables_filter {
+    position: relative;
+}
+.dataTables_filter input {
+    padding-left: 35px;
+}
+.dataTables_filter label::before {
+    content: "\f002";
+    color: #bcc2c8;
+    display: inline-block;
+    font-size: 18px;
+    font-family: 'FontAwesome';
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: absolute;
+    top: calc(50% - 9px);
+    left: 10px;
+    z-index: 2;
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++ SORTING */
+
+.sorting_asc,
+.sorting_desc,
+.sorting {
+    cursor: pointer;
+    outline: none;
+}
+
+.sorting_asc span,
+.sorting_desc span,
+.sorting span {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sorting_asc span::after,
+.sorting_desc span::after,
+.sorting span::after {
+    content:"\f160";
+    font-family: 'FontAwesome';
+    font-size: 0.9em;
+    margin-left: 10px;
+}
+.sorting span::after {
+    content:"\f175";
+    color: #ccc;
+}
+.sorting_desc span::after {
+    content:"\f161";
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++ EDITABLE EN LÍNEA */
+
+
+td.editable {
+    cursor: pointer;
+}
 
 .editable .DTE_Label,
 .editable .DTE_Field_Info {
@@ -249,14 +345,16 @@ tbody [role='row']+[role='row'] .checkbox-container::before {
 }
 
 
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++ STICKY */
 
-/* ------------------- STICKY --> Revisar */
 
-.checkbox-container, 
+/* .checkbox-container, 
 .cell-id_hotel,
 .cell-name_hotel {
     background: #fff;
     position: relative;
+    z-index: 2;
 }
 
 .scrolling .checkbox-container,
@@ -265,4 +363,54 @@ tbody [role='row']+[role='row'] .checkbox-container::before {
 }
 .scrolling .cell-name_hotel {
     box-shadow: -1px 0 #eaeaea, 4px 0 3px -3px #ccc;
+}
+
+
+.tracking {
+    position: relative;
+}
+.bg-sticky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: 0 0 0 rgba(0, 0, 0, .1);
+    transition: box-shadow .2s;
+}
+.scrolling .bg-sticky {
+    box-shadow: 10px 0 10px rgba(0,0,0,.1);
+    transition: box-shadow .4s;
+} */
+
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++ STICKY 2 */
+
+
+.checkbox-container,
+.cell-id_hotel,
+.cell-name_hotel {
+    background: #fff;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+.scroll-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+.bg-sticky {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    height: 100%;
+    box-shadow: 0 0 0 rgba(0, 0, 0, .1);
+    transition: box-shadow .2s;
+}
+.scrolling + .bg-sticky {
+    box-shadow: 10px 0 10px rgba(0, 0, 0, .1);
+    transition: box-shadow .4s;
 }

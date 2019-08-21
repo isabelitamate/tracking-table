@@ -42,7 +42,39 @@ $(document).ready(function () {
 
 
     editor = new $.fn.dataTable.Editor({
+
         table: "#tracking",
+
+        i18n: {
+            create: {
+                button: "Nuevo",
+                title:  "Crear entrada",
+                submit: "Crear"
+            },
+            edit: {
+                button: "Editar",
+                title:  "Editar entrada",
+                submit: "Actualizar"
+            },
+            remove: {
+                button: "Eliminar",
+                title:  "Eliminar",
+                submit: "Eliminar",
+                confirm: {
+                    _: "Segur@ que quieres eliminar %d entradas?",
+                    1: "Segur@ que quieres eliminar 1 entrada?"
+                }
+            },
+            error: {
+                system: "Se ha producido un error"
+            },
+            multi: {
+                title: "Valores múltiples",
+                info: "Valores múltiples.",
+                restore: "Anular modidicación"
+            }
+        },
+
         fields: [{
             label: "ID",
             labelInfo: "Required",
@@ -176,6 +208,7 @@ $(document).ready(function () {
 
             // Show Editor what has changed
             successCallback(output);
+
         }
 
     });
@@ -187,14 +220,6 @@ $(document).ready(function () {
     var table = $('#tracking').DataTable({
 
 
-        // Columnas
-
-        "columnDefs": [
-        // {   ---------------------- esto vale para algo? parece que hace visible la columna 'ID hotel'.
-        //     "visible": true,
-        //     "targets": groupColumn
-        // },
-        ],
         "order": [
             [groupColumn, 'asc']
         ],
@@ -215,7 +240,6 @@ $(document).ready(function () {
                     last = group;
                 }
             });
-
         },
 
 
@@ -255,7 +279,7 @@ $(document).ready(function () {
             { data: "affilied_status", className: 'cell-affilied editable', orderable: false },
             { data: "comentarios", className: 'editable' }
          ],
-        order: [1, 'asc'],
+        // order: [1, 'asc'],
         keys: {
             columns: '.editable',
             keys: [ 9 ],
@@ -284,8 +308,26 @@ $(document).ready(function () {
                 editor: editor
             }
         ],
-        oLanguage: {
-            sSearch: ""
+        language: {
+
+            paginate: {
+                first: "Primera",
+                previous: "Anterior",
+                next: "Siguiente",
+                last: "Última"
+            },
+            search: "",
+            info: 'Mostrando _START_ de _END_ de _TOTAL_ entradas.',
+            infoEmpty: "Mostrando 0 entradas.",
+            infoFiltered: "(filtradas entre _MAX_ entradas).",
+            zeroRecords: "No se han encontrado registros.",
+            select: {
+                rows: {
+                    _: ' %d filas seleccionadas.',
+                    0: '',
+                    1: ' Una fila seleccionada.'
+                }
+            }
         }
     });
 
@@ -321,9 +363,27 @@ $(document).ready(function () {
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ CUSTOM SELECT
 
 
+    // Función botón seleccionar todos
+
+    function selectAllButtonUpdate() {
+
+        if (table.rows({ selected: true, page: 'current' })[0].length == table.rows({ page: 'current' })[0].length) {
+
+            $('.js-multi-select').removeClass('some-selected').addClass('all-selected');
+
+        } else if (table.rows({ selected: true, page: 'current' })[0].length) {
+
+            $('.js-multi-select').removeClass('all-selected').addClass('some-selected');
+
+        } else if (table.rows({ selected: false, page: 'current' })[0].length) {
+
+            $('.js-multi-select').removeClass('all-selected some-selected');
+        } 
+    } 
+
     // Modificaciones en el selector de Datatable
 
-    table.on('user-select', function (e, dt, type, cell, originalEvent) { // CUSTOM BASIC SELECT/ DESELECT (target item)
+    table.on('user-select', function (e, dt, type, cell, originalEvent) { // CUSTOM BASIC SELECT - DESELECT (target item)
         
         e.preventDefault(); // previene todo
         var target = $(originalEvent.target.closest("tr")); // row target
@@ -338,24 +398,7 @@ $(document).ready(function () {
 
         // Modify select all
 
-        if (table.rows({ selected: true, page: 'current' })[0].length == table.rows({ page: 'current' })[0].length) {
-
-            console.log('todos');
-            $('.js-multi-select').removeClass('some-selected');
-            $('.js-multi-select').addClass('all-selected');
-
-        } else if ( table.rows({ selected: true, page: 'current' })[0].length ) {
-
-            console.log('alguno');
-            $('.js-multi-select').removeClass('all-selected');
-            $('.js-multi-select').addClass('some-selected');
-
-        } else if (table.rows({ selected: false, page: 'current' })[0].length) {
-
-            console.log('no queda ninguno');
-            $('.js-multi-select').removeClass('all-selected');
-            $('.js-multi-select').removeClass('some-selected');
-        } 
+        selectAllButtonUpdate();
 
     });
 
@@ -366,14 +409,23 @@ $(document).ready(function () {
         if (table.rows({ selected: true, page: 'current' })[0].length ) {
 
             table.rows('.selected', { page: 'current' }).deselect();
-            $(this).removeClass('some-selected');
-            $(this).removeClass('all-selected');
+            $(this).removeClass('some-selected all-selected');
         } else {
 
             table.rows({ page: 'current' }).select();
             $(this).addClass('all-selected');
         }
     });
+
+    table.on('draw', function () { // actualiza en el cambio de página
+
+        selectAllButtonUpdate();
+
+    });
+
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ ROW GROUP
+
 
     table.on('select', function (e, dt, row, indexes) { // SELECT GROUP
 
@@ -403,14 +455,14 @@ $(document).ready(function () {
 
         // ----> DISABLE / ENABLE HOTEL INPUTS
 
-        if ( buttonApi.text() == 'New' ) { // NEW form
+        if ( buttonApi.text() == 'Nuevo' ) { // NEW form
 
             $('.DTE_Field.no-edit input').attr("disabled", false);
             $('.DTE_Field.no-edit select').attr("disabled", false);
 
             $('.DTE_Form_Buttons button').attr("disabled", true); // disable submit button for require inputs validation
         
-        } else if ( buttonApi.text() == 'Edit' ) { // EDIT form
+        } else if ( buttonApi.text() == 'Editar' ) { // EDIT form
 
             $('.DTE_Field.no-edit input').attr("disabled", true);
             $('.DTE_Field.no-edit select').attr("disabled", true);
@@ -418,7 +470,7 @@ $(document).ready(function () {
 
         // ----> FORM DIVISOR AND TYPE FIELDS
 
-        if ((buttonApi.text() == 'New') || (buttonApi.text() == 'Edit') && (!$('DTE_Field_divisor').length)) { // NEW & EDIT form
+        if ((buttonApi.text() == 'Nuevo') || (buttonApi.text() == 'Editar') && (!$('DTE_Field_divisor').length)) { // NEW & EDIT form
 
             $('.DTE_Field_Name_analytics_ua').before("<div class='DTE_Field_divisor'><span>Google Analytics</span></div>");
             $('.DTE_Field_Name_gtm_id').before("<div class='DTE_Field_divisor'><span>Google GTM</span></div>");
@@ -445,6 +497,9 @@ $(document).ready(function () {
             });
         });
 
+        // Add Class "btn-primary"
+
+        $('.DTE_Form_Buttons .btn').addClass('btn-primary');
 
     });
 
@@ -452,32 +507,87 @@ $(document).ready(function () {
 
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ STICKY
 
-    // ¡¡¡¡¡¡ REVISAR !!!!! 
-    // La sombra que queda es mejor ponerla con un nuevo elemento.
+    // ¡¡¡¡¡¡ VERSIÓN 1 !!!!! 
 
     // Detecta si se está haciendo scroll y mueve las 3 primera columnas
+
+    // var stickyWidth;
+
+    // function stickyWidthCalc() {
+    //     stickyWidth = $('.checkbox-container').innerWidth() + $('.cell-id_hotel').innerWidth() + $('.cell-name_hotel').innerWidth();
+    //     $('.bg-sticky').css("width", stickyWidth + 'px');
+    // };
     
-    $('.tracking').scroll(function() {
+    // $('.tracking').scroll(function() {
 
-        if ( $(this).scrollLeft() > 0 ) {
+    //     if ( $(this).scrollLeft() > 0 ) {
 
-            if (!$(this).hasClass('scrolling')) { // Añadimos la clase 'scrolling' si no la tiene (para poner la sombra que queda por poner)
-                $(this).addClass('scrolling');
-            }
-            $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', $(this).scrollLeft() + 'px');
+    //         if (!$(this).hasClass('scrolling')) { // Añadimos la clase 'scrolling' si no la tiene (para poner la sombra que queda por poner)
+                
+    //             $(this).addClass('scrolling');
 
-        } else if ( $(this).scrollLeft() == 0 ) { // Quitamos clase 'scrolling'
+    //             stickyWidthCalc();
+    //         }
+    //         $('.checkbox-container, .cell-id_hotel, .cell-name_hotel, .bg-sticky').css('left', $(this).scrollLeft() + 'px');
 
-            $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', 'auto');
+    //     } else if ( $(this).scrollLeft() == 0 ) { // Quitamos clase 'scrolling'
 
-            $(this).removeClass('scrolling');
-        }       
-    });
+    //         $('.checkbox-container, .cell-id_hotel, .cell-name_hotel, .bg-sticky').css('left', 'auto');
 
+    //         $(this).removeClass('scrolling');
+    //     }    
+    // });
+
+    // table.on('draw', function () { // actualiza en el cambio de página
+
+    //     $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', $('.tracking').scrollLeft() + 'px');
+
+    //     stickyWidthCalc();
+
+    // });
+
+    // $('.tracking').append("<div class='bg-sticky'></div>");
+
+
+
+
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ STICKY
+
+    // ¡¡¡¡¡¡ VERSIÓN 2 !!!!!
+
+    var columna1, columna2, columna3;
+
+    $('.tracking').before("<div class='scroll-wrapper'></div>");
+    $('.scroll-wrapper').append($('.tracking'));
+    $('.scroll-wrapper').append("<div class='bg-sticky'></div>");
+    
+    function columnsLeft() {
+        columna1 = $('.checkbox-container').innerWidth();
+        columna2 = $('.cell-id_hotel').innerWidth();
+        columna3 = $('.cell-name_hotel').innerWidth();
+        $('.cell-id_hotel').css('left', columna1 + 'px');
+        $('.cell-name_hotel').css('left', (columna1 + columna2) + 'px');
+        $('.bg-sticky').css({
+            'width': (columna1 + columna2 + columna3) + 'px',
+            'height': $('.dataTable').innerHeight() + 'px'
+        });
+    }
     table.on('draw', function () { // actualiza en el cambio de página
 
-        $('.checkbox-container, .cell-id_hotel, .cell-name_hotel').css('left', $('.tracking').scrollLeft() + 'px');
+        columnsLeft();
+    });
 
+    $('.tracking').scroll(function() {
+
+        if (($(this).scrollLeft() > 0) && (!$(this).hasClass('scrolling'))) {
+
+            $(this).addClass('scrolling');
+            columnsLeft();
+
+        } else if ( $(this).scrollLeft() == 0 ) {
+
+            $(this).removeClass('scrolling');
+        }    
     });
 
 

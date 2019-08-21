@@ -112,10 +112,12 @@
 .DTE_Field_divisor span {
     display: block;
     font-size: 1.3em;
-    background: #f0f0f0;
+    background: #444;
+    border-radius: 3px;
+    color: #fff;
     padding: 7px;
 }
-.DTE_Field_Name_comentarios::before {
+.DTE_Form_Content .DTE_Field_Name_comentarios::before {
     content: '';
     display: block;
     border-top: 1px solid #bbb;
@@ -145,6 +147,7 @@
 }
 .multi-restore {
     color: #cd1919;
+    cursor: pointer;
 }
 .DTE_Label_Info {
     vertical-align: baseline;
@@ -166,16 +169,26 @@
     box-shadow: 0 0 0 1px #ccc;
     text-indent: 10px;
 }
+.DTE_Field_Input select,
+.multi-value {
+    cursor: pointer;
+}
 .DTE_Field_Name_comentarios .multi-value,
 .DTE_Field_Input textarea {
     width: 100%;
     border: none;
-    padding: 10px;
-    line-height: 1;
+    padding: 15px 15px 0;
+    height: 43px;
     text-indent: 0;
-    min-height: 55px;
     box-shadow: 0 0 0 1px #ccc;
 }
+.DTE_Form_Content .DTE_Field_Name_comentarios .multi-value,
+.DTE_Form_Content .DTE_Field_Input textarea {
+    min-height: 55px;
+    padding: 10px;
+    line-height: 1.2;
+}
+
 input[type=number] {
     -moz-appearance: textfield;
     appearance: textfield;
@@ -195,12 +208,17 @@ select[disabled] {
     appearance: none;
 }
 
+.multi-value {
+    color: #999;
+}
 
 .multi-info {
     display: none!important;
 }
 
-
+.DTE_Form_Buttons .btn {
+    padding: 10px 20px;
+}
 
 
 
@@ -245,10 +263,5 @@ tr.selected .checkbox-container::before {
 }
 
 
-
-
-
-
-/* ------------------------------------- ESTILOS PARA LA TABLA */
 
 
