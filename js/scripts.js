@@ -38,7 +38,7 @@ $(document).ready(function () {
     }
 
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Set up the EDITOR
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ Set up DATATABLE EDITOR
 
 
     editor = new $.fn.dataTable.Editor({
@@ -181,10 +181,8 @@ $(document).ready(function () {
                 // Create new row(s), using the current time and loop index as
                 // the row id
                 var dateKey = +new Date();
-
                 $.each(d.data, function (key, value) {
                     var id = dateKey + '' + key;
-
                     value.DT_RowId = id;
                     trackingStorage[id] = value;
                     output.data.push(value);
@@ -210,7 +208,6 @@ $(document).ready(function () {
             successCallback(output);
 
         }
-
     });
 
 
@@ -223,6 +220,7 @@ $(document).ready(function () {
         "order": [
             [groupColumn, 'asc']
         ],
+
         "drawCallback": function (settings) {
             var api = this.api();
             var rows = api.rows({
@@ -242,9 +240,7 @@ $(document).ready(function () {
             });
         },
 
-
         // Scroll
-
         scrollX: false,
 
         // edit
@@ -252,6 +248,7 @@ $(document).ready(function () {
         data: $.map(trackingStorage, function (value, key) {
             return value;
         }),
+
         columns: [{ // Checkbox select column
                 data: null,
                 defaultContent: '',
@@ -279,18 +276,21 @@ $(document).ready(function () {
             { data: "affilied_status", className: 'cell-affilied editable', orderable: false },
             { data: "comentarios", className: 'editable' }
          ],
-        // order: [1, 'asc'],
-        keys: {
-            columns: '.editable',
-            keys: [ 9 ],
-            editor: editor,
-            editOnFocus: true
-        },
+
+        // order: [1, 'asc'], // comento orden porque parece que no vale para nada
+
+        // keys: {  // comento keys porque produce un error al dar doble click sobre selector de row. (descomentar script: dataTables.keyTable.min.js)
+        //     columns: '.editable',
+        //     keys: [ 9 ],
+        //     editor: editor,
+        //     editOnFocus: true
+        // },
+
         select: {
             style: '',
             selector: 'td.checkbox-container'
         },
-        // select: true,
+
         buttons: [
             {
                 extend: "edit",
@@ -308,6 +308,7 @@ $(document).ready(function () {
                 editor: editor
             }
         ],
+        
         language: {
 
             paginate: {
@@ -432,7 +433,7 @@ $(document).ready(function () {
         var target = table.row(indexes).nodes().to$();
         var next = target.next(); // siguiente row
 
-        if (!next.is('.selected, .group')) { // selecciona si no está seleccionada o es group
+        if ( (row) && (!next.is('.selected, .group')) ) { // selecciona si no está seleccionada o es group
 
             table.row(next).select();
         }
