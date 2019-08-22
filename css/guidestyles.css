@@ -1,11 +1,8 @@
-
-
-
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++ GENERIC */
 
 
-body{
+body {
     margin-top: 0 !important;
     background-color: #f6f6f6 !important;
 }
@@ -26,7 +23,6 @@ input {
 
 
 
-
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++ BUTTONS */
 
@@ -36,6 +32,23 @@ input {
     margin: 20px 0;
 }
 
+.DTE_Action_Create .btn-primary,
+.buttons-create {
+    background-color: #6eaa18;
+}
+
+.DTE_Action_Create .btn-primary:hover,
+.buttons-create:hover {
+    background-color: #568413;
+}
+
+.DTE_Action_Remove .btn-primary {
+    background-color: #d62101;
+}
+
+.DTE_Action_Remove .btn-primary:hover {
+    background-color: #ab1a00;
+}
 
 .btn-primary:disabled,
 .btn-primary.disabled {
@@ -48,15 +61,17 @@ input {
     background: #eee;
 }
 
+.DTE_Form_Buttons .btn,
+.tracking-header .btn {
+    padding: 10px 20px;
+}
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++ TABLE */
 
 
-
-
-/* ---------------------- Contenedores  */
+/* --------------------------------------- Contenedores  */
 
 
 #tracking_wrapper {
@@ -68,7 +83,8 @@ input {
 }
 
 .dataTable {
-    position: static!important; /* necesario para el sticky */
+    position: static !important;
+    /* necesario para el sticky */
 }
 
 .tracking-header,
@@ -77,17 +93,17 @@ input {
     align-items: center;
 }
 
-.tracking {  
-    overflow: auto;                   /* scroll */
-    max-height: calc(100vh - 258px);  /* scroll Y ? */
+.tracking {
+    overflow: auto;
+    /* scroll */
+    max-height: calc(100vh - 258px);
+    /* scroll Y ? */
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
 }
 
 
-
-
-/* ---------------------- Header */
+/* --------------------------------------- Header */
 
 
 .dataTable thead tr:last-child th,
@@ -95,175 +111,20 @@ input {
     border-bottom: 2px solid #777;
 }
 
-.dt-buttons {
-    display: flex;
-}
-.dt-buttons::before {
-    content: "";
-    border-left: 1px solid #ccc;
-    order: 0;
-    margin: 0 20px;
-}
-.dt-buttons .buttons-edit {
-    border-radius: 2px 0 0 2px;
-    order: -1;
-    color: #5aa0c5;
-}
-.dt-buttons .buttons-edit:hover {
-    position: relative;
-    z-index: 2;
-}
-.dt-buttons .buttons-remove {
-    border-radius: 0 2px 2px 0;
-    margin-left: -1px;
-    order: -1;
-    color: #d62101;
-}
 
-.tracking-header .btn {
-    padding: 10px 20px;
-}
-.tracking-header input {
-    padding-top: 12px;
-    padding-bottom: 12px;
-}
-
-/* ---------------------- Footer */
-
-
-.dataTables_info {
-    color: #666;
-}
-
-
-/* ---------------------- Pagination */
-
-.paginate_button {
-    border-radius: 0;
-    float: left;
-    margin-left: -1px;
-}
-.paginate_button.previous {
-    border-radius: 2px 0 0 2px;
-}
-.paginate_button.next {
-    border-radius: 0 2px 2px 0;
-}
-.paginate_button.current {
-    pointer-events: none;
-}
-.paginate_button:not(.current):not(.disabled) {
-    color: #5aa0c5;
-}
-
-
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++ CELLS */
-
-
-
-.dataTable [rowspan] {
-    vertical-align: top;
-}
-.dataTable [rowspan].checkbox-container {
-    vertical-align: bottom;
-}
-
-.dataTable [colspan="4"],
-.dataTable [colspan="2"] {
-    border-bottom: 1px solid #eaeaea;
-}
-
-.dataTable th,
-.dataTable td {
-    padding: 15px;
-    white-space: nowrap;
-    width: auto!important; /* ¿ duda: quitamos el ancho JS? */
-}
-
-.dataTable th:not(.checkbox-container),
-.dataTable td:not(.checkbox-container) {
-    min-width: 90px;
-    box-shadow: inset 1px 0 #eaeaea;
-}
-.dataTable td:last-child {
-    min-width: 500px;
-}
-
-
-
-
-.dataTable .cell-analytics + .cell-analytics,
-.dataTable .cell-gtm + .cell-gtm,
-.dataTable .cell-ads + .cell-ads,
-.dataTable .cell-bing + .cell-bing,
-.dataTable .cell-affilied + .cell-affilied {
-    /* border-left: none; */
-    box-shadow: none; 
-}
-
-.dataTable .checkbox-container {
-    padding: 15px!important;
-}
-
-.dataTable .selected td {
-    background: #e8f5ff;
-}
-
-.dataTable .group + [role='row'] {
-    border-top: 1px solid #eaeaea;
-}
-
-tbody .cell-id_hotel {
-    color: #5aa0c5;
-}
-
-
-
-/* -------------------  Grupos de rows */
-
-
-.group {
-    display: none;
-}
-
-tbody [role='row']+[role='row'] .checkbox-container,
-[role='row']+[role='row'] td:nth-child(2),
-[role='row']+[role='row'] td:nth-child(3),
-[role='row']+[role='row'] td:nth-child(4) {
-    color: transparent;
-    pointer-events: none;
-}
-
-tbody [role='row']+[role='row'] .checkbox-container::before {
-    display: none;
-}
-
-
-/* ------------------- Empty column groups */
-
-.cell-analytics:empty ~ .cell-analytics,
-.cell-gtm:empty ~ .cell-gtm,
-.cell-ads:empty ~ .cell-ads,
-.cell-bing:empty ~ .cell-bing,
-.cell-affilied:empty ~ .cell-affilied {
-    color: #ccc;
-    pointer-events: none;
-}
-
-
-
-/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* +++++++++++++++++++++++++++++++++++++++ FILTRO DE BÚSQUEDA */
+/* --------------------------------------- Header Search Filter */
 
 
 .dataTables_filter {
     position: relative;
 }
+
 .dataTables_filter input {
     padding-left: 35px;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
+
 .dataTables_filter label::before {
     content: "\f002";
     color: #bcc2c8;
@@ -280,73 +141,244 @@ tbody [role='row']+[role='row'] .checkbox-container::before {
 }
 
 
+/* --------------------------------------- Headers Buttons */
+
+
+.dt-buttons {
+    display: flex;
+}
+
+.dt-buttons::before {
+    content: "";
+    border-left: 1px solid #ccc;
+    order: 0;
+    margin: 0 20px;
+}
+
+.dt-buttons .buttons-edit {
+    border-radius: 2px 0 0 2px;
+    order: -1;
+    color: #5aa0c5;
+}
+
+.dt-buttons .buttons-edit:hover {
+    position: relative;
+    z-index: 2;
+}
+
+.dt-buttons .buttons-remove {
+    border-radius: 0 2px 2px 0;
+    margin-left: -1px;
+    order: -1;
+    color: #d62101;
+}
+
+
+/* --------------------------------------- Footer */
+
+
+.dataTables_info {
+    color: #666;
+}
+
+
+/* --------------------------------------- Footer Pagination */
+
+
+.paginate_button {
+    border-radius: 0;
+    float: left;
+    margin-left: -1px;
+}
+
+.paginate_button.previous {
+    border-radius: 2px 0 0 2px;
+}
+
+.paginate_button.next {
+    border-radius: 0 2px 2px 0;
+}
+
+.paginate_button.current {
+    pointer-events: none;
+}
+
+.paginate_button:not(.current):not(.disabled) {
+    color: #5aa0c5;
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++ CELLS */
+
+
+.dataTable [rowspan] {
+    vertical-align: top;
+}
+
+.dataTable [rowspan].checkbox-container {
+    vertical-align: bottom;
+}
+
+.dataTable [colspan="4"],
+.dataTable [colspan="2"] {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.dataTable th,
+.dataTable td {
+    padding: 15px;
+    white-space: nowrap;
+    width: auto !important;
+    /* ¿ duda: quitamos el ancho JS? */
+}
+
+.dataTable th:not(.checkbox-container),
+.dataTable td:not(.checkbox-container) {
+    min-width: 90px;
+    box-shadow: inset 1px 0 #eaeaea;
+}
+
+.dataTable td:last-child {
+    min-width: 500px;
+}
+
+.dataTable .checkbox-container {
+    padding: 15px !important;
+}
+
+.dataTable .selected td {
+    background: #e8f5ff;
+}
+
+tbody .cell-id_hotel {
+    color: #5aa0c5;
+}
+
+
+/* --------------------------------------- Column Group */
+
+
+.dataTable .cell-analytics+.cell-analytics,
+.dataTable .cell-gtm+.cell-gtm,
+.dataTable .cell-ads+.cell-ads,
+.dataTable .cell-bing+.cell-bing,
+.dataTable .cell-affilied+.cell-affilied {
+    box-shadow: none;
+}
+
+td:not(.cell-analytics)+.cell-analytics:empty~.cell-analytics,
+td:not(.cell-gtm)+.cell-gtm:empty~.cell-gtm,
+td:not(.cell-ads)+.cell-ads:empty~.cell-ads,
+td:not(.cell-bing)+.cell-bing:empty~.cell-bing,
+td:not(.cell-affilied)+.cell-affilied:empty~.cell-affilied {
+    /* el primero vacío */
+    color: #ccc;
+    pointer-events: none;
+}
+
+
+/* --------------------------------------- Row Group */
+
+
+.group {
+    display: none;
+}
+
+.dataTable .group+[role='row'] {
+    border-top: 1px solid #eaeaea;
+}
+
+[role='row']+[role='row'] td.checkbox-container,
+[role='row']+[role='row'] td:nth-child(2),
+[role='row']+[role='row'] td:nth-child(3),
+[role='row']+[role='row'] td:nth-child(4) {
+    color: transparent;
+    pointer-events: none;
+}
+
+[role='row']+[role='row'] td.checkbox-container::before {
+    display: none;
+}
+
+
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++ SORTING */
 
-.sorting_asc,
-.sorting_desc,
-.sorting {
+
+th[class*='sorting'] {
     cursor: pointer;
     outline: none;
 }
 
-.sorting_asc span,
-.sorting_desc span,
-.sorting span {
+th[class*='sorting'] span {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.sorting_asc span::after,
-.sorting_desc span::after,
-.sorting span::after {
-    content:"\f160";
+th[class*='sorting'] span::after {
+    content: "\f160";
     font-family: 'FontAwesome';
     font-size: 0.9em;
     margin-left: 10px;
+    width: 13px;
 }
-.sorting span::after {
-    content:"\f175";
+
+th.sorting span::after {
+    content: "\f175";
     color: #ccc;
 }
-.sorting_desc span::after {
-    content:"\f161";
+
+th.sorting_desc span::after {
+    content: "\f161";
 }
 
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* ++++++++++++++++++++++++++++++++++++++++ EDITABLE EN LÍNEA */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++ CHECKBOX */
 
 
-td.editable {
-    cursor: pointer;
+.checkbox-container::before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    box-sizing: border-box;
+    border: 1px solid #b4b4b4;
+    font-family: 'fontawesome';
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    vertical-align: text-bottom;
+    transition: all 250ms ease;
+    border-radius: 15%;
+    color: #f4f4f4;
+    background-color: #f4f4f4;
 }
 
-.editable .DTE_Label,
-.editable .DTE_Field_Info {
-    display: none;
-}
-.DTE_Inline {
-    margin: -15px;
-}
-.DTE_Inline_Field {
-    min-width: 100%;
+.js-multi-select.all-selected::before,
+tr.selected .checkbox-container::before {
+    content: '\f00c';
+    background-color: #5aa0c5;
+    border-color: #5aa0c5;
 }
 
-.DTE_Inline .DTE_Inline_Field input,
-.DTE_Inline .DTE_Inline_Field select {
-    text-indent: 15px;
+.js-multi-select.some-selected::before {
+    content: '\f068';
+    font-size: 9px;
+    background-color: #5aa0c5;
+    border-color: #5aa0c5;
 }
-.DTE_Inline .DTE_Inline_Field select {
-    text-indent: 11px;
-}
+
 
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++ STICKY */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++ STICKY v1 */
 
 
 /* .checkbox-container, 
@@ -361,14 +393,15 @@ td.editable {
 .scrolling .cell-id_hotel {
     box-shadow: -1px 0 #eaeaea;
 }
+
 .scrolling .cell-name_hotel {
     box-shadow: -1px 0 #eaeaea, 4px 0 3px -3px #ccc;
 }
 
-
 .tracking {
     position: relative;
 }
+
 .bg-sticky {
     position: absolute;
     top: 0;
@@ -377,6 +410,7 @@ td.editable {
     box-shadow: 0 0 0 rgba(0, 0, 0, .1);
     transition: box-shadow .2s;
 }
+
 .scrolling .bg-sticky {
     box-shadow: 10px 0 10px rgba(0,0,0,.1);
     transition: box-shadow .4s;
@@ -384,9 +418,8 @@ td.editable {
 
 
 
-
 /* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-/* +++++++++++++++++++++++++++++++++++++++++++++++++ STICKY 2 */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++ STICKY v2 */
 
 
 .checkbox-container,
@@ -397,10 +430,12 @@ td.editable {
     left: 0;
     z-index: 2;
 }
+
 .scroll-wrapper {
     position: relative;
     overflow: hidden;
 }
+
 .bg-sticky {
     position: absolute;
     pointer-events: none;
@@ -410,7 +445,311 @@ td.editable {
     box-shadow: 0 0 0 rgba(0, 0, 0, .1);
     transition: box-shadow .2s;
 }
-.scrolling + .bg-sticky {
+
+.scrolling+.bg-sticky {
     box-shadow: 10px 0 10px rgba(0, 0, 0, .1);
     transition: box-shadow .4s;
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++ INPUTS */
+
+
+.DTE_Field_Input input,
+.DTE_Field_Input select,
+.multi-value {
+    width: 100%;
+    border: none;
+    padding: 0;
+    line-height: 40px;
+    height: 40px;
+    box-shadow: 0 0 0 1px #ccc;
+    text-indent: 10px;
+}
+
+.DTE_Field_Input select,
+.multi-value {
+    cursor: pointer;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.no-edit .multi-value,
+input[disabled],
+select[disabled] {
+    background: #f0f0f0;
+    pointer-events: none;
+    cursor: auto;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* --------------------------------------- Inputs inline */
+
+.DTE_Inline .DTE_Inline_Field input,
+.DTE_Inline .DTE_Inline_Field select {
+    text-indent: 15px;
+}
+
+.DTE_Inline .DTE_Inline_Field select {
+    text-indent: 11px;
+}
+
+/* --------------------------------------- Inputs Modal */
+
+.DTE_Field_Name_comentarios .multi-value,
+.DTE_Field_Input textarea {
+    width: 100%;
+    border: none;
+    padding: 15px 15px 0;
+    height: 43px;
+    text-indent: 0;
+    box-shadow: 0 0 0 1px #ccc;
+}
+
+.DTE_Form_Content .DTE_Field_Name_comentarios .multi-value,
+.DTE_Form_Content .DTE_Field_Input textarea {
+    min-height: 55px;
+    padding: 10px;
+    line-height: 1.2;
+}
+
+/* --------------------------------------- Inputs components */
+
+.multi-value {
+    color: #999;
+}
+
+.multi-info {
+    display: none !important;
+}
+
+.DTE_Label {
+    margin-bottom: 7.5px;
+    line-height: 1;
+    font-weight: 400;
+}
+
+.DTE_Field_Info,
+.DTE_Label_Info,
+.multi-restore {
+    color: #9c9c9c;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    margin: 6px 7px 0;
+    display: block;
+}
+
+.multi-restore {
+    color: #cd1919;
+    cursor: pointer;
+}
+
+.DTE_Label_Info {
+    vertical-align: baseline;
+    display: inline;
+}
+
+.multi-restore[style*="block"]~.DTE_Field_Info {
+    display: none;
+}
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++ EDITABLE EN LÍNEA */
+
+
+td.editable {
+    cursor: pointer;
+}
+
+.editable .DTE_Label,
+.editable .DTE_Field_Info {
+    display: none;
+}
+
+.DTE_Inline {
+    margin: -15px;
+}
+
+.DTE_Inline_Field {
+    min-width: 100%;
+}
+
+
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++ MODAL */
+
+
+/* --------------------------------------- Modal Layout */
+
+/* Cortinilla */
+
+.DTED_Lightbox_Background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, .6);
+}
+
+/* Modal dialog */
+
+.DTED_Lightbox_Wrapper {
+    position: fixed;
+    z-index: 1050;
+    top: -200px;
+    left: 0;
+    right: 0;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.DTED_Lightbox_Container {
+    position: relative;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.DTE_Action_Create,
+.DTE_Action_Edit {
+    height: calc(100vh - 80px);
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.DTE_Action_Remove {
+    margin: 40px auto;
+}
+
+/* Modal header */
+
+.DTE_Header_Content {
+    padding: 15px 50px 15px 15px;
+    font-weight: normal;
+    font-size: 22px;
+}
+
+/* Modal close */
+
+.DTED_Lightbox_Close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 35px;
+    opacity: 0.6;
+    color: #868686;
+    cursor: pointer;
+}
+
+.DTED_Lightbox_Close::before {
+    content: '×';
+}
+
+.DTED_Lightbox_Close:hover {
+    color: #000;
+}
+
+/* Modal body */
+
+.DTE_Body {
+    padding: 20px 20px 30px;
+    flex: 1 1 auto;
+    overflow: auto;
+}
+
+.DTE_Body_Content {
+    max-height: none !important;
+}
+
+/* Modal footer */
+
+.DTE_Footer {
+    padding: 15px;
+    text-align: right;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.DTE_Form_Buttons {
+    padding-left: 20px;
+}
+
+.DTE_Form_Error {
+    color: #ab1a00;
+}
+
+/* --------------------------------------- Modal Form */
+
+/* Fields in columns */
+
+.DTE_Form_Content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+}
+
+.DTE_Form_Content .DTE_Field {
+    padding: 5px 10px;
+    width: 50%;
+}
+
+.DTE_Form_Content .DTE_Field_Name_comentarios {
+    width: 100%;
+}
+
+/* Divisor */
+
+.DTE_Field_divisor {
+    width: 100%;
+    padding: 15px 10px 10px;
+}
+
+.DTE_Field_divisor span {
+    display: block;
+    font-size: 1.3em;
+    background: #444;
+    border-radius: 3px;
+    color: #fff;
+    padding: 7px;
+}
+
+.DTE_Form_Content .DTE_Field_Name_comentarios::before {
+    content: '';
+    display: block;
+    border-top: 1px solid #bbb;
+    margin: 10px 0
+}
+
+/* Label */
+
+.DTE_Action_Edit .DTE_Field_Info,
+.DTE_Action_Edit .multi-restore {
+    min-height: 12px;
+    line-height: 12px;
 }
